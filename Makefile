@@ -5,8 +5,9 @@ TARGET_OBJS=bin/build/**/*.o
 TEST_TARGET_OBJS=bin/build/list/*.o
 
 all: 
-	mkdir -p bin/build/list bin/build/graph
-	$(CC) -c src/list/list.c $(LDFLAGS) -o bin/build/list/list.o
+	mkdir -p bin/build/list bin/build/vector bin/build/graph
+	$(CC) -c src/list/list.c $(LDFLAGS) -o bin/build/list/list.o	
+	$(CC) -c src/vector/vector.c $(LDFLAGS) -o bin/build/vector/vector.o
 	$(CC) -c src/graph/graph.c $(LDFLAGS) -o bin/build/graph/graph.o
 
 clean:

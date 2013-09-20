@@ -1,7 +1,7 @@
 #ifndef _KLD_LIST_H
 #define _KLD_LIST_H
 
-typedef enum { false, true } bool;
+#include "../common/common.h"
 
 typedef struct kld_list kld_list_t;
 typedef struct kld_list_node kld_list_node_t;
