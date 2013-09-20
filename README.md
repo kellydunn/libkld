@@ -8,7 +8,7 @@
    \/____/ \/_/\/___/   \/_/\/_/\/____/\/__,_ /
                                                
 ```
-
+[![Build Status](https://travis-ci.org/kellydunn/libkld.png)](https://travis-ci.org/kellydunn/libkld)
 # what
 
 Rewriting common C structs in my side projects is getting a little tiresome, so I thought I'd have a single place where I keep my data structure implementations.  It's also good practice.
