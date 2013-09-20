@@ -13,11 +13,23 @@ START_TEST (test_new_vector) {
   fail_if(v->data != NULL, "Unexpected data value for new vector");
 } END_TEST
 
+//Ensure the ability for a vector to correctly declare itself as empty
+// ✔ A vector should be empty upon initializatoin
+START_TEST (test_vector_is_empty) {
+  kld_vector_t * v = (kld_vector_t *) new_vector();
+  fail_if(vector_is_empty(v) != true, "Expected vector to be identified as empty upon initialization");
+
+  // TODO Test after being inserted
+  // TODO Test after being deleted
+} END_TEST
+
 Suite * new_vector_suite() {
   Suite * s = suite_create("vector");
   
   TCase * tc_core = tcase_create("Core");
   tcase_add_test(tc_core, test_new_vector);
+
+  tcase_add_test(tc_core, test_vector_is_empty);
 
   suite_add_tcase(s, tc_core);
 
