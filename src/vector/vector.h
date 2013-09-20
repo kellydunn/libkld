@@ -6,7 +6,7 @@
 typedef struct kld_vector kld_vector_t;
 
 struct kld_vector {
-  void * data;
+  void ** data;
   int size;
   int capacity;
 };

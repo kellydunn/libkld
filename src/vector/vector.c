@@ -24,7 +24,18 @@ void * vector_data_at(kld_vector_t *v, int index) {
 }
 
 void vector_insert(kld_vector_t * v, void * data) {
-  // TODO Implement
+  if(vector_is_empty(v)) {
+    v->data = malloc(sizeof(void*) * v->capacity);
+  }
+
+  // Grow if at capacity
+  if(v->size == v->capacity) {
+    v->capacity *= 2;
+    v = realloc(v->data, v->capacity * sizeof(void *));
+  }
+
+  v->data[v->size] = data;
+  v->size++;
 }
 
 void vector_remove(kld_vector_t * v, int index) {
