@@ -1,4 +1,4 @@
-CC=gcc
+CC=clang
 LDFLAGS= -I/usr/local/lib:/usr/lib
 TEST_CFLAGS= -lcheck
 TARGET_OBJS=bin/build/**/*.o
