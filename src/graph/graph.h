@@ -1,7 +1,6 @@
 #ifndef _KLD_GRAPH_H
 #define _KLD_GRAPH_H
 
-#include "../list/list.h"
 #include "../common/common.h"
 
 typedef struct kld_graph kld_graph_t;
@@ -10,8 +9,9 @@ typedef struct kld_graph_edge kld_graph_edge_t;
 
 struct kld_graph {
   // TODO implement
+  // TODO Implement vectors such that we can use them for a matrix implementaiton
+
   // Adjacency Matrix
-  void *[][] adjacency_matrix;
   // Incidence Matrix
 };
 
@@ -21,12 +21,10 @@ struct kld_graph_node {
 
   // Vertices are stored as records or objects, and every vertex stores a list of adjacent vertices. 
   // This data structure allows the storage of additional data on the vertices.
-  kld_list_t * adjacent_nodes;
 
   // Vertices and edges are stored as records or objects. 
   // Each vertex stores its incident edges, and each edge stores its incident vertices. 
   // This data structure allows the storage of additional data on vertices and edges.
-  kld_list_t * incident_edges;
 };
 
 struct kld_graph_edge {
@@ -35,7 +33,6 @@ struct kld_graph_edge {
   // Vertices and edges are stored as records or objects. 
   // Each vertex stores its incident edges, and each edge stores its incident vertices. 
   // This data structure allows the storage of additional data on vertices and edges.
-  kld_list_t * incident_nodes;
 };
 
 #endif

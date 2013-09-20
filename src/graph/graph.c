@@ -6,7 +6,7 @@ bool adjacent(kld_graph_t * g, kld_graph_node_t * n1, kld_graph_node_t * n2) {
   return false;
 }
 
-kld_list_t * neighbors(kld_graph_t * g, kld_graph_node_t * n) {
+void * neighbors(kld_graph_t * g, kld_graph_node_t * n) {
   // TODO Implement
   return NULL;
 }
