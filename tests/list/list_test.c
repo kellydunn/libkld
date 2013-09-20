@@ -70,7 +70,7 @@ START_TEST (test_append_1_pop_1_list) {
   fail_if(tmp->data != "test data", "Unexpected data value for returned list node");
 
   fail_if(list->size != 0, "Unexpected list size");
-  fail_if(!is_empty(list), "List doesn't report as empty");
+  fail_if(!list_is_empty(list), "List doesn't report as empty");
 } END_TEST
 
 // Ensure a single value can be appended then popped off of a list
@@ -93,7 +93,7 @@ START_TEST (test_append_2_pop_1_list) {
   fail_if(list->head->data != list->tail->data, "Head and Tail have diverged");
   
   fail_if(list->size != 1, "Unexpected list size");
-  fail_if(is_empty(list), "List reports itself as empty");
+  fail_if(list_is_empty(list), "List reports itself as empty");
 } END_TEST
 
 // Ensure a single value can be appended then popped off of a list
@@ -115,7 +115,7 @@ START_TEST (test_append_2_pop_2_list) {
   fail_if(tmp2->data != "test data", "Unexpected data value for returned list node");
 
   fail_if(list->size != 0, "Unexpected list size");
-  fail_if(!is_empty(list), "List does not report itself as empty");
+  fail_if(!list_is_empty(list), "List does not report itself as empty");
 } END_TEST
 
 // Ensure a list can be reversed with the expected values

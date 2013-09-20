@@ -20,12 +20,12 @@ struct kld_list_node {
 
 kld_list_t * new_list();
 void list_init(kld_list_t * list);
-bool is_empty(kld_list_t * list);
+bool list_is_empty(kld_list_t * list);
 
 void list_append(kld_list_t * list, void * val);
 kld_list_node_t * list_pop(kld_list_t * list);
 kld_list_t * list_reverse(kld_list_t * list);
 
 void list_init_with_one(kld_list_t *list, kld_list_node_t * node);
-void list_nuke(kld_list_t * list);
+void list_clear(kld_list_t * list);
 #endif

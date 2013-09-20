@@ -48,7 +48,7 @@ void list_append(kld_list_t * list, void * val) {
 
   tmp->data = val;
 
-  if(is_empty(list)) {
+  if(list_is_empty(list)) {
     list_init_with_one(list, tmp);
    } else {
     list->tail->next = tmp;
@@ -64,13 +64,13 @@ void list_append(kld_list_t * list, void * val) {
 kld_list_node_t * list_pop(kld_list_t * list) {
   kld_list_node_t * tmp = calloc(1, sizeof(kld_list_node_t));
 
-  if(is_empty(list)) {
+  if(list_is_empty(list)) {
     return NULL;
   } else {    
     tmp = (kld_list_node_t *) list->tail;
 
     if(list->size == 1) {
-      list_nuke(list);
+      list_clear(list);
     } else {
       list->tail = (kld_list_node_t*) list->tail->prev;
       list->tail->next = (kld_list_node_t*) list->head;
@@ -100,7 +100,7 @@ kld_list_t * list_reverse(kld_list_t * list) {
 } 
 
 // Returns whether or not the list has no nodes
-bool is_empty(kld_list_t * list) {
+bool list_is_empty(kld_list_t * list) {
   return (list->head == NULL && list->tail == NULL);
 }
 
@@ -116,8 +116,8 @@ void list_init_with_one(kld_list_t * list, kld_list_node_t * node) {
   list->tail->prev = list->head;
 }
 
-// Completely nukes list
-void list_nuke(kld_list_t * list) {
+// Completely clears list
+void list_clear(kld_list_t * list) {
   list->tail = NULL;
   list->head = NULL;  
 }
