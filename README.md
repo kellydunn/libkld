@@ -33,4 +33,4 @@ Currently, `libkld` has the following data structures:
 
 # documentation
 
-I'm currently investigating the best optoin for documenting C projects.  The two I'm evaluating now are Doxygen and [docurium](https://github.com/libgit2/docurium). 
+I'm currently investigating the best option for documenting C projects.  The two I'm evaluating now are Doxygen and [docurium](https://github.com/libgit2/docurium). 
