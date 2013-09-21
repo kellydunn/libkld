@@ -131,8 +131,8 @@ START_TEST (test_reverse_list) {
   }
   
   kld_list_t * reversed_list = (kld_list_t*) list_reverse(list);
-
   kld_list_node_t * rev_current = reversed_list->head;
+
   int rev_count;
 
   for(rev_count = 0; rev_count < 4; rev_count++) {

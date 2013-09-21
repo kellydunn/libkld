@@ -87,14 +87,18 @@ kld_list_node_t * list_pop(kld_list_t * list) {
 kld_list_t * list_reverse(kld_list_t * list) {
   kld_list_node_t * current = list->head;
   kld_list_node_t * tmp = current;
-  kld_list_node_t * res = NULL;
+  kld_list_node_t * rev = NULL;
 
-  while(current != NULL) {
+  // We have to check against tail because the list is circular
+  while(current != NULL && rev != list->tail) {
     tmp = current->next;
-    current->next = res;
-    res = current;
+    current->next = rev;
+    rev = current;
     current = tmp;
   }
+
+  kld_list_t * res = new_list();
+  res->head = rev;
 
   return res;
 } 
