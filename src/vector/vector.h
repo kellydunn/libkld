@@ -15,7 +15,7 @@ extern const int DEFAULT_VECTOR_CAPACITY;
 
 kld_vector_t * new_vector();
 bool vector_is_empty(kld_vector_t * v);
-void * vector_data_at(kld_vector_t * v, int index);
+void * vector_get(kld_vector_t * v, int i);
 void vector_insert(kld_vector_t * v, void * data);
 void vector_remove(kld_vector_t * v, int index);
 

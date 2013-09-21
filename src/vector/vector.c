@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <string.h>
 #include "vector.h"
 
 const int DEFAULT_VECTOR_CAPACITY = 10;
@@ -18,20 +19,19 @@ bool vector_is_empty(kld_vector_t *v) {
   return v->size == 0 && v->data == NULL;
 }
 
-void * vector_data_at(kld_vector_t *v, int index) {
-  // TODO Implement
-  return NULL;
+void * vector_get(kld_vector_t *v, int i) {
+  return v->data[i];
 }
 
 void vector_insert(kld_vector_t * v, void * data) {
   if(vector_is_empty(v)) {
-    v->data = malloc(sizeof(void*) * v->capacity);
+    v->data = malloc(sizeof(void*) * DEFAULT_VECTOR_CAPACITY);
   }
 
   // Grow if at capacity
   if(v->size == v->capacity) {
     v->capacity *= 2;
-    v = realloc(v->data, v->capacity * sizeof(void *));
+    v->data = realloc(v->data, sizeof(void *) * v->capacity);
   }
 
   v->data[v->size] = data;
