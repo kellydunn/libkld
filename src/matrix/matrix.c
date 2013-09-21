@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "matrix.h"
 
 kld_matrix_t * new_matrix() {
