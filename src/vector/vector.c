@@ -38,6 +38,20 @@ void vector_insert(kld_vector_t * v, void * data) {
   v->size++;
 }
 
-void vector_remove(kld_vector_t * v, int index) {
-  // TODO Implement
+void vector_remove(kld_vector_t * v, int i) {
+  v->data[i] = NULL;
+
+  // Shuffle elements down
+  int idx;
+  for(idx = v->size; idx > i; idx--) {
+    v->data[idx-1] = v->data[idx];
+  } 
+
+  v->size--;
+
+  // Shrink if below half capacity.
+  if (v->size < (v->capacity / 2)) {
+    v->capacity /= 2;
+    v->data = realloc(v->data, sizeof(void *) * v->capacity);
+  }
 }
