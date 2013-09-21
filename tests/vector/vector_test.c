@@ -101,7 +101,8 @@ START_TEST (test_vector_insert_one_and_remove_one) {
 } END_TEST
 
 //Ensure the ability to add twice then remove once 
-// ✔ A vector should correctly identify itself as empty after inserting once and removing once.
+// ✔ A vector should correctly identify itself as not empty after inserting twice and removing once.
+// ✔ A vector should correctly return the correct value after removing at a specific index
 START_TEST (test_vector_insert_two_and_remove_one) {
   kld_vector_t * v = (kld_vector_t *) new_vector();
 
@@ -112,6 +113,26 @@ START_TEST (test_vector_insert_two_and_remove_one) {
   fail_if(vector_is_empty(v) == true, "Vector should not be empty after inserting and deleting one.");
   fail_if(strcmp(vector_get(v, 0), "test-1") != 0, "Unexpected value at the first index after adding twice and removing once.");
 
+} END_TEST
+
+//Ensure the ability to add to capacity and remove once 
+// ✔ A vector should correctly identify itself as not empty after inserting twice and removing once.
+// ✔ A vector should correctly return the correct value after removing at a specific index
+START_TEST (test_vector_insert_to_capacity_and_remove_one) {
+  kld_vector_t * v = (kld_vector_t *) new_vector();
+
+  int i;
+  for(i = 0; i < DEFAULT_VECTOR_CAPACITY; i++) {
+    char * insert_str = calloc(256, sizeof(char));
+    sprintf(insert_str, "test-%d", i);
+    vector_insert(v, (void*) insert_str); 
+  }
+
+  vector_remove(v, 0);
+
+  fail_if(vector_is_empty(v) == true, "Vector should not be empty after inserting to capacity and deleting one.");
+  fail_if(strcmp(vector_get(v, 0), "test-1") != 0, "Unexpected value at the first index after adding to capacity and removing once.");
+  fail_if(v->capacity != DEFAULT_VECTOR_CAPACITY, "Expected capacity to decrease after removing below threshold.");
 } END_TEST
 
 Suite * new_vector_suite() {
@@ -128,6 +149,7 @@ Suite * new_vector_suite() {
 
   tcase_add_test(tc_core, test_vector_insert_one_and_remove_one);
   tcase_add_test(tc_core, test_vector_insert_two_and_remove_one);
+  tcase_add_test(tc_core, test_vector_insert_to_capacity_and_remove_one);
 
   suite_add_tcase(s, tc_core);
 

@@ -44,15 +44,15 @@ void vector_remove(kld_vector_t * v, int i) {
 
   // Shuffle elements down
   int idx;
-  for(idx = v->size-1; idx > i; idx--) {
-    v->data[idx-1] = v->data[idx];
+  for(idx = i; idx < v->size-1; idx++) {
+    v->data[idx] = v->data[idx+1];
   } 
 
   v->size--;
-  
+
   if(v->size == 0) {
     v->data = NULL;
-  } else if (v->size > DEFAULT_VECTOR_CAPACITY && v->size < (v->capacity / 2)) {
+  } else if (v->size * 2 < v->capacity && v->capacity > DEFAULT_VECTOR_CAPACITY) {
     v->capacity /= 2;
     v->data = realloc(v->data, sizeof(void *) * v->capacity);
   }
