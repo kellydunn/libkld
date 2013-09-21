@@ -29,6 +29,7 @@ This will result in a static library: `/usr/lib/libkld.a`
 Currently, `libkld` has the following data structures:
 
   - list
+  - vector
 
 # documentation
 
