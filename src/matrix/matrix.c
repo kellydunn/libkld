@@ -4,7 +4,13 @@
 kld_matrix_t * new_matrix() {
   kld_matrix_t * m = calloc(1, sizeof(kld_matrix_t *));
   m->data = NULL;
+  m->y_bounds = 0;
+  m->x_bounds = 0;
   return m;
+}
+
+void matrix_append_row(kld_matrix_t * m, kld_vector_t * v) {
+  vector_append(*m->data, v);
 }
 
 kld_vector_t * matrix_get_row(kld_matrix_t * m, int y) {
@@ -29,8 +35,12 @@ void * matrix_get(kld_matrix_t * m, int x, int y) {
 }
 
 void matrix_add(kld_matrix_t * m, int x, int y, void * data) {
+  if(m->y_bounds < y) {
+    matrix_append_row(m, new_vector());
+  }
+
   kld_vector_t * v = matrix_get_row(m, y);
-  // add at specific index in other vector
+  vector_insert_at(v, x, data);
 }
 
 void matrix_remove(kld_matrix_t * m, int x, int y) {
