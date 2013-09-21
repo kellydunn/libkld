@@ -32,3 +32,7 @@ void matrix_add(kld_matrix_t * m, int x, int y, void * data) {
   kld_vector_t * v = matrix_get_row(m, y);
   // add at specific index in other vector
 }
+
+void matrix_remove(kld_matrix_t * m, int x, int y) {
+  // TODO Implement
+}

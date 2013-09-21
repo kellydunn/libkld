@@ -6,7 +6,6 @@
 const int DEFAULT_VECTOR_CAPACITY = 10;
 
 kld_vector_t * new_vector() {
-  // TODO Implement
   kld_vector_t * v = calloc(1, sizeof(kld_vector_t*));
   v->size = 0;
   v->capacity = DEFAULT_VECTOR_CAPACITY;
@@ -20,23 +19,39 @@ bool vector_is_empty(kld_vector_t *v) {
   return v->size == 0 && v->data == NULL;
 }
 
+void vector_grow(kld_vector_t * v) {
+  v->capacity *= 2;
+  v->data = realloc(v->data, sizeof(void *) * v->capacity);
+}
+
 void * vector_get(kld_vector_t *v, int i) {
   return v->data[i];
 }
 
-void vector_append(kld_vector_t * v, void * data) {
+void vector_insert_at(kld_vector_t * v, int i, void * data) {
+  if (i > v->size) {
+    int idx;
+    for(idx = v->size; idx < i; idx++) {
+      v->data[v->size] = data;
+      v->size++;
+    }
+  }
+
   if(vector_is_empty(v)) {
     v->data = malloc(sizeof(void*) * DEFAULT_VECTOR_CAPACITY);
   }
 
   // Grow if at capacity
   if(v->size == v->capacity) {
-    v->capacity *= 2;
-    v->data = realloc(v->data, sizeof(void *) * v->capacity);
+    vector_grow(v);
   }
 
-  v->data[v->size] = data;
+  v->data[i] = data;
   v->size++;
+}
+
+void vector_append(kld_vector_t * v, void * data) {
+  vector_insert_at(v, v->size, data);
 }
 
 void vector_remove_at(kld_vector_t * v, int i) {
