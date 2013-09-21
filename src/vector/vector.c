@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include "vector.h"
 
@@ -43,14 +44,15 @@ void vector_remove(kld_vector_t * v, int i) {
 
   // Shuffle elements down
   int idx;
-  for(idx = v->size; idx > i; idx--) {
+  for(idx = v->size-1; idx > i; idx--) {
     v->data[idx-1] = v->data[idx];
   } 
 
   v->size--;
-
-  // Shrink if below half capacity.
-  if (v->size < (v->capacity / 2)) {
+  
+  if(v->size == 0) {
+    v->data = NULL;
+  } else if (v->size > DEFAULT_VECTOR_CAPACITY && v->size < (v->capacity / 2)) {
     v->capacity /= 2;
     v->data = realloc(v->data, sizeof(void *) * v->capacity);
   }

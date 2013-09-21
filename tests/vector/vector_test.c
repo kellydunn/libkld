@@ -88,6 +88,32 @@ START_TEST (test_vector_insert_past_capacity) {
 
 } END_TEST
 
+//Ensure the ability to add once then remove once 
+// ✔ A vector should correctly identify itself as empty after inserting once and removing once.
+START_TEST (test_vector_insert_one_and_remove_one) {
+  kld_vector_t * v = (kld_vector_t *) new_vector();
+
+  vector_insert(v, "test");
+  vector_remove(v, 0);
+
+  fail_if(vector_is_empty(v) != true, "Vector should be empty after inserting and deleting one.");
+
+} END_TEST
+
+//Ensure the ability to add twice then remove once 
+// ✔ A vector should correctly identify itself as empty after inserting once and removing once.
+START_TEST (test_vector_insert_two_and_remove_one) {
+  kld_vector_t * v = (kld_vector_t *) new_vector();
+
+  vector_insert(v, "test-0");
+  vector_insert(v, "test-1");
+  vector_remove(v, 0);
+
+  fail_if(vector_is_empty(v) == true, "Vector should not be empty after inserting and deleting one.");
+  fail_if(strcmp(vector_get(v, 0), "test-1") != 0, "Unexpected value at the first index after adding twice and removing once.");
+
+} END_TEST
+
 Suite * new_vector_suite() {
   Suite * s = suite_create("vector");
   
@@ -99,6 +125,9 @@ Suite * new_vector_suite() {
   tcase_add_test(tc_core, test_vector_insert_one);
   tcase_add_test(tc_core, test_vector_insert_two);
   tcase_add_test(tc_core, test_vector_insert_past_capacity);
+
+  tcase_add_test(tc_core, test_vector_insert_one_and_remove_one);
+  tcase_add_test(tc_core, test_vector_insert_two_and_remove_one);
 
   suite_add_tcase(s, tc_core);
 
