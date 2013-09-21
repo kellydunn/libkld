@@ -24,7 +24,7 @@ void * vector_get(kld_vector_t *v, int i) {
   return v->data[i];
 }
 
-void vector_insert(kld_vector_t * v, void * data) {
+void vector_append(kld_vector_t * v, void * data) {
   if(vector_is_empty(v)) {
     v->data = malloc(sizeof(void*) * DEFAULT_VECTOR_CAPACITY);
   }
@@ -39,7 +39,7 @@ void vector_insert(kld_vector_t * v, void * data) {
   v->size++;
 }
 
-void vector_remove(kld_vector_t * v, int i) {
+void vector_remove_at(kld_vector_t * v, int i) {
   v->data[i] = NULL;
 
   // Shuffle elements down

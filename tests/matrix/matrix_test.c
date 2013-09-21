@@ -7,7 +7,6 @@ START_TEST (test_new_matrix) {
   fail_if(m->data != NULL, "Unexpected data after initialization");
 } END_TEST;
 
-
 Suite * new_matrix_suite() {
   Suite * s = suite_create("matrix");
   

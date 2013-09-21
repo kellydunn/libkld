@@ -21,7 +21,7 @@ START_TEST (test_vector_is_empty) {
   fail_if(vector_is_empty(v) != true, "Expected vector to be identified as empty upon initialization");
 
   // Testing after being inserted
-  vector_insert(v, (void *) "test");
+  vector_append(v, (void *) "test");
   fail_if(vector_is_empty(v) == true, "Expected vector to not be empty after inserting one element.");
 
   // TODO Test after being deleted
@@ -31,10 +31,10 @@ START_TEST (test_vector_is_empty) {
 // ✔ A vector should have the correct size after adding one
 // ✔ A vector should have the correct capacity after adding one
 // ✔ A vector should have the correct data after adding one
-START_TEST (test_vector_insert_one) {
+START_TEST (test_vector_append_one) {
   kld_vector_t * v = (kld_vector_t *) new_vector();
 
-  vector_insert(v, (void*) "test");
+  vector_append(v, (void*) "test");
 
   fail_if(vector_is_empty(v) == true, "Vector should not be empty after inserting one element.");
   fail_if(v->size != 1, "Unexpected size of vector after inserting one element.");
@@ -47,11 +47,11 @@ START_TEST (test_vector_insert_one) {
 // ✔ A vector should have the correct size after adding two
 // ✔ A vector should have the correct capacity after adding two
 // ✔ A vector should have the correct data after adding two
-START_TEST (test_vector_insert_two) {
+START_TEST (test_vector_append_two) {
   kld_vector_t * v = (kld_vector_t *) new_vector();
 
-  vector_insert(v, (void*) "test-0");
-  vector_insert(v, (void*) "test-1");
+  vector_append(v, (void*) "test-0");
+  vector_append(v, (void*) "test-1");
 
   fail_if(vector_is_empty(v) == true, "Vector should not be empty after inserting one element.");
   fail_if(v->size != 2, "Unexpected size of vector after inserting one element.");
@@ -65,14 +65,14 @@ START_TEST (test_vector_insert_two) {
 // ✔ A vector should have the correct size after adding one
 // ✔ A vector should have the correct capacity after adding one
 // ✔ A vector should have the correct data after adding one
-START_TEST (test_vector_insert_past_capacity) {
+START_TEST (test_vector_append_past_capacity) {
   kld_vector_t * v = (kld_vector_t *) new_vector();
 
   int i;
   for(i = 0; i < DEFAULT_VECTOR_CAPACITY + 1; i++) {
     char * insert_str = calloc(256, sizeof(char));
     sprintf(insert_str, "test-%d", i);
-    vector_insert(v, (void*) insert_str); 
+    vector_append(v, (void*) insert_str); 
   }
 
   fail_if(vector_is_empty(v) == true, "Vector should not be empty after inserting past capacity.");
@@ -90,11 +90,11 @@ START_TEST (test_vector_insert_past_capacity) {
 
 //Ensure the ability to add once then remove once 
 // ✔ A vector should correctly identify itself as empty after inserting once and removing once.
-START_TEST (test_vector_insert_one_and_remove_one) {
+START_TEST (test_vector_append_one_and_remove_at_one) {
   kld_vector_t * v = (kld_vector_t *) new_vector();
 
-  vector_insert(v, "test");
-  vector_remove(v, 0);
+  vector_append(v, "test");
+  vector_remove_at(v, 0);
 
   fail_if(vector_is_empty(v) != true, "Vector should be empty after inserting and deleting one.");
 
@@ -103,12 +103,12 @@ START_TEST (test_vector_insert_one_and_remove_one) {
 //Ensure the ability to add twice then remove once 
 // ✔ A vector should correctly identify itself as not empty after inserting twice and removing once.
 // ✔ A vector should correctly return the correct value after removing at a specific index
-START_TEST (test_vector_insert_two_and_remove_one) {
+START_TEST (test_vector_append_two_and_remove_at_one) {
   kld_vector_t * v = (kld_vector_t *) new_vector();
 
-  vector_insert(v, "test-0");
-  vector_insert(v, "test-1");
-  vector_remove(v, 0);
+  vector_append(v, "test-0");
+  vector_append(v, "test-1");
+  vector_remove_at(v, 0);
 
   fail_if(vector_is_empty(v) == true, "Vector should not be empty after inserting and deleting one.");
   fail_if(strcmp(vector_get(v, 0), "test-1") != 0, "Unexpected value at the first index after adding twice and removing once.");
@@ -118,17 +118,17 @@ START_TEST (test_vector_insert_two_and_remove_one) {
 //Ensure the ability to add to capacity and remove once 
 // ✔ A vector should correctly identify itself as not empty after inserting twice and removing once.
 // ✔ A vector should correctly return the correct value after removing at a specific index
-START_TEST (test_vector_insert_to_capacity_and_remove_one) {
+START_TEST (test_vector_append_to_capacity_and_remove_at_one) {
   kld_vector_t * v = (kld_vector_t *) new_vector();
 
   int i;
   for(i = 0; i < DEFAULT_VECTOR_CAPACITY; i++) {
     char * insert_str = calloc(256, sizeof(char));
     sprintf(insert_str, "test-%d", i);
-    vector_insert(v, (void*) insert_str); 
+    vector_append(v, (void*) insert_str); 
   }
 
-  vector_remove(v, 0);
+  vector_remove_at(v, 0);
 
   fail_if(vector_is_empty(v) == true, "Vector should not be empty after inserting to capacity and deleting one.");
   fail_if(strcmp(vector_get(v, 0), "test-1") != 0, "Unexpected value at the first index after adding to capacity and removing once.");
@@ -143,13 +143,13 @@ Suite * new_vector_suite() {
 
   tcase_add_test(tc_core, test_vector_is_empty);
 
-  tcase_add_test(tc_core, test_vector_insert_one);
-  tcase_add_test(tc_core, test_vector_insert_two);
-  tcase_add_test(tc_core, test_vector_insert_past_capacity);
+  tcase_add_test(tc_core, test_vector_append_one);
+  tcase_add_test(tc_core, test_vector_append_two);
+  tcase_add_test(tc_core, test_vector_append_past_capacity);
 
-  tcase_add_test(tc_core, test_vector_insert_one_and_remove_one);
-  tcase_add_test(tc_core, test_vector_insert_two_and_remove_one);
-  tcase_add_test(tc_core, test_vector_insert_to_capacity_and_remove_one);
+  tcase_add_test(tc_core, test_vector_append_one_and_remove_at_one);
+  tcase_add_test(tc_core, test_vector_append_two_and_remove_at_one);
+  tcase_add_test(tc_core, test_vector_append_to_capacity_and_remove_at_one);
 
   suite_add_tcase(s, tc_core);
 

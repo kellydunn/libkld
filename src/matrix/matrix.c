@@ -18,7 +18,7 @@ kld_vector_t * matrix_get_col(kld_matrix_t * m, int x) {
   //      Lets research to see if we can do better.
   int i;
   for(i = 0; i < m->y_bounds; i++) {
-    vector_insert(res, vector_get(matrix_get_row(m, i), x));
+    vector_append(res, vector_get(matrix_get_row(m, i), x));
   }
 
   return res;
@@ -26,4 +26,9 @@ kld_vector_t * matrix_get_col(kld_matrix_t * m, int x) {
 
 void * matrix_get(kld_matrix_t * m, int x, int y) {
   return vector_get(matrix_get_row(m, y), x);
+}
+
+void matrix_add(kld_matrix_t * m, int x, int y, void * data) {
+  kld_vector_t * v = matrix_get_row(m, y);
+  // add at specific index in other vector
 }
