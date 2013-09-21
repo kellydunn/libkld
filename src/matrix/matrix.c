@@ -36,7 +36,11 @@ void * matrix_get(kld_matrix_t * m, int x, int y) {
 
 void matrix_add(kld_matrix_t * m, int x, int y, void * data) {
   if(m->y_bounds < y) {
-    matrix_append_row(m, new_vector());
+    int i;
+    for(i = m->y_bounds; i < y; i++) {
+      matrix_append_row(m, new_vector());
+      m->y_bounds++;
+    }
   }
 
   kld_vector_t * v = matrix_get_row(m, y);
