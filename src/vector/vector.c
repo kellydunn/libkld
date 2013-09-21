@@ -56,8 +56,8 @@ void vector_insert_at(kld_vector_t * v, int i, void * data) {
     // We want to shift all the values after the insertion point to the right.
     // Then insert our desired value.
     int idx;
-    for(idx = v->size-1; idx > i; idx--) {
-      v->data[idx+1] = v->data[idx];
+    for(idx = v->size; idx > i; idx--) {
+      v->data[idx] = v->data[idx-1];
     }
   }
 

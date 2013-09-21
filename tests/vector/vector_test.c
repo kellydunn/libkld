@@ -57,8 +57,8 @@ START_TEST (test_vector_append_two) {
   fail_if(v->size != 2, "Unexpected size of vector after inserting one element.");
   fail_if(v->capacity != DEFAULT_VECTOR_CAPACITY, "Vector capacity should not change after inserting one element.");
   fail_if(v->data == NULL, "Vector should have data elements after inserting one element.");
-  fail_if((strcmp((char*) vector_get(v, 0), "test-0") != 0), "Unexpected data at expected location after inserting one.");
-  fail_if((strcmp((char*) vector_get(v, 1), "test-1") != 0), "Unexpected data at expected location after inserting one.");
+  fail_if((strcmp((char*) vector_get(v, 0), "test-0") != 0), "Unexpected data at expected location after inserting two.");
+  fail_if((strcmp((char*) vector_get(v, 1), "test-1") != 0), "Unexpected data at expected location after inserting two.");
 } END_TEST
 
 //Ensure the ability to add once to a vector
@@ -90,6 +90,7 @@ START_TEST (test_vector_append_past_capacity) {
 
 //Ensure the ability to insert once into a vector
 // ✔ A vector should have the correct size after inserting into a specific index
+// ✔ A vector should have the correct data in the expected index after inserting once
 START_TEST (test_vector_insert_at_0_once) {
   kld_vector_t * v = (kld_vector_t *) new_vector();
 
@@ -104,6 +105,7 @@ START_TEST (test_vector_insert_at_0_once) {
 
 //Ensure the ability to insert twice into a vector
 // ✔ A vector should have the correct size after inserting into a specific index
+// ✔ A vector should have the correct data in the expected indicies after inserting twice
 START_TEST (test_vector_insert_at_0_twice) {
   kld_vector_t * v = (kld_vector_t *) new_vector();
 
@@ -114,7 +116,27 @@ START_TEST (test_vector_insert_at_0_twice) {
   fail_if(v->size != 2, "Unexpected size of vector after inserting one element.");
   fail_if(v->capacity != DEFAULT_VECTOR_CAPACITY, "Vector capacity should not change after inserting one element.");
   fail_if(v->data == NULL, "Vector should have data elements after inserting one element.");
-  fail_if((strcmp((char*) vector_get(v, 0), "test-0") != 0), "Unexpected data at expected location after inserting one.");
+  fail_if((strcmp((char*) vector_get(v, 0), "test-0") != 0), "Unexpected data at expected location after inserting two.");
+  fail_if((strcmp((char*) vector_get(v, 1), "test-1") != 0), "Unexpected data at expected location after inserting two.");
+} END_TEST
+
+//Ensure the ability to insert twice into a vector
+// ✔ A vector should have the correct size after inserting into a specific index
+// ✔ A vector should have the correct data in the expected indicies after inserting three times
+START_TEST (test_vector_insert_at_0_twice_insert_at_1_once) {
+  kld_vector_t * v = (kld_vector_t *) new_vector();
+
+  vector_insert_at(v, 0, (void*) "test-2");
+  vector_insert_at(v, 0, (void*) "test-0");
+  vector_insert_at(v, 1, (void*) "test-1");
+
+  fail_if(vector_is_empty(v) == true, "Vector should not be empty after inserting one element.");
+  fail_if(v->size != 3, "Unexpected size of vector after inserting one element.");
+  fail_if(v->capacity != DEFAULT_VECTOR_CAPACITY, "Vector capacity should not change after inserting one element.");
+  fail_if(v->data == NULL, "Vector should have data elements after inserting one element.");
+  fail_if((strcmp((char*) vector_get(v, 0), "test-0") != 0), "Unexpected data at expected location after inserting three times.");
+  fail_if((strcmp((char*) vector_get(v, 1), "test-1") != 0), "Unexpected data at expected location after inserting three times.");
+  fail_if((strcmp((char*) vector_get(v, 2), "test-2") != 0), "Unexpected data at expected location after inserting three times.");
 } END_TEST
 
 //Ensure the ability to add once then remove once 
@@ -178,6 +200,7 @@ Suite * new_vector_suite() {
 
   tcase_add_test(tc_core, test_vector_insert_at_0_once);
   tcase_add_test(tc_core, test_vector_insert_at_0_twice);
+  tcase_add_test(tc_core, test_vector_insert_at_0_twice_insert_at_1_once);
 
   tcase_add_test(tc_core, test_vector_append_one_and_remove_at_one);
   tcase_add_test(tc_core, test_vector_append_two_and_remove_at_one);
