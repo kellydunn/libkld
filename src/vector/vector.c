@@ -29,19 +29,41 @@ void * vector_get(kld_vector_t *v, int i) {
 }
 
 void vector_insert_at(kld_vector_t * v, int i, void * data) {
-  if (i > v->size) {
-    int idx;
-    for(idx = v->size; idx < i; idx++) {
-      v->data[v->size] = data;
-      v->size++;
-    }
-  }
-
   if(vector_is_empty(v)) {
     v->data = malloc(sizeof(void*) * DEFAULT_VECTOR_CAPACITY);
   }
 
+  if (i > v->size) {
+    // If the desired index is outside of our current size
+    // We need to fill the vector up to the desired index point
+    // Then insert the value we want.
+    int idx;
+    for(idx = v->size; idx < i; idx++) {
+
+      // Grow if at capacity
+      // TODO The following six lines could be refactored 
+      //      with the others below.
+      if(v->size == v->capacity) {
+        vector_grow(v);
+      }
+
+      v->data[v->size] = NULL;
+      v->size++;
+    }
+
+  } else {
+    // If the desired index is within our current size
+    // We want to shift all the values after the insertion point to the right.
+    // Then insert our desired value.
+    int idx;
+    for(idx = v->size-1; idx > i; idx--) {
+      v->data[idx+1] = v->data[idx];
+    }
+  }
+
   // Grow if at capacity
+  // TODO The following six lines could be refactored 
+  //      with the others above.
   if(v->size == v->capacity) {
     vector_grow(v);
   }
