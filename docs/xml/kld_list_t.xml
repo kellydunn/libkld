@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='utf-8'?>
+<typedef id="kld_list_t" name="kld_list_t" xmlns="http://jessevdk.github.com/cldoc/1.0">
+  <type name="kld_list" ref="kld_list#kld_list" />
+  <function id="list_append" name="list_append">
+    <brief> Appends data to a list</brief>
+    <return>
+      <type builtin="yes" name="void" />
+    </return>
+    <argument id="list_append::list" name="list">
+      <doc>the list to append data to.</doc>
+      <type name="kld_list_t" qualifier="*" ref="kld_list_t#kld_list_t" />
+    </argument>
+    <argument id="list_append::data" name="data">
+      <doc>the data to append to the list.</doc>
+      <type builtin="yes" name="void" qualifier="*" />
+    </argument>
+  </function>
+  <function id="list_clear" name="list_clear">
+    <brief> Clears the <ref ref="kld_list_t#kld_list_t">kld_list_t</ref> and all its members</brief>
+    <return>
+      <type builtin="yes" name="void" />
+    </return>
+    <argument id="list_clear::list" name="list">
+      <type name="kld_list_t" qualifier="*" ref="kld_list_t#kld_list_t" />
+    </argument>
+  </function>
+  <function id="list_is_empty" name="list_is_empty">
+    <brief> Checks to see if a list is empty.</brief>
+    <return>
+      <type builtin="yes" name="bool" />
+    </return>
+    <argument id="list_is_empty::list" name="list">
+      <doc>the list to be checked.</doc>
+      <type name="kld_list_t" qualifier="*" ref="kld_list_t#kld_list_t" />
+    </argument>
+  </function>
+  <function id="list_prepend" name="list_prepend">
+    <brief> Prepends data to a list</brief>
+    <return>
+      <type builtin="yes" name="void" />
+    </return>
+    <argument id="list_prepend::list" name="list">
+      <doc>the list to prepend data to.</doc>
+      <type name="kld_list_t" qualifier="*" ref="kld_list_t#kld_list_t" />
+    </argument>
+    <argument id="list_prepend::data" name="data">
+      <doc>the data to prepend to the list.</doc>
+      <type builtin="yes" name="void" qualifier="*" />
+    </argument>
+  </function>
+  <function id="list_reverse" name="list_reverse">
+    <brief> Returns a reversed copy of the passed in list.</brief>
+    <return>
+      <type name="kld_list_t" qualifier="*" ref="kld_list_t#kld_list_t" />
+    </return>
+    <argument id="list_reverse::list" name="list">
+      <doc>the <ref ref="kld_list_t#kld_list_t">kld_list_t</ref> to be reversed.</doc>
+      <type name="kld_list_t" qualifier="*" ref="kld_list_t#kld_list_t" />
+    </argument>
+  </function>
+  <function id="new_list" name="new_list">
+    <brief> Creates a new <ref ref="kld_list_t#kld_list_t">kld_list_t</ref>
+    </brief>
+    <return>
+      <type name="kld_list_t" qualifier="*" ref="kld_list_t#kld_list_t" />
+    </return>
+  </function>
+</typedef>

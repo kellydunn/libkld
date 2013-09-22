@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='utf-8'?>
+<typedef id="kld_matrix_t" name="kld_matrix_t" xmlns="http://jessevdk.github.com/cldoc/1.0">
+  <type name="kld_matrix" ref="kld_matrix#kld_matrix" />
+  <function id="matrix_append_col" name="matrix_append_col">
+    <return>
+      <type builtin="yes" name="void" />
+    </return>
+    <argument id="matrix_append_col::m" name="m">
+      <type name="kld_matrix_t" qualifier="*" ref="kld_matrix_t#kld_matrix_t" />
+    </argument>
+    <argument id="matrix_append_col::c" name="c">
+      <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
+    </argument>
+  </function>
+  <function id="matrix_append_row" name="matrix_append_row">
+    <return>
+      <type builtin="yes" name="void" />
+    </return>
+    <argument id="matrix_append_row::m" name="m">
+      <type name="kld_matrix_t" qualifier="*" ref="kld_matrix_t#kld_matrix_t" />
+    </argument>
+    <argument id="matrix_append_row::r" name="r">
+      <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
+    </argument>
+  </function>
+  <function id="matrix_get" name="matrix_get">
+    <return>
+      <type builtin="yes" name="void" qualifier="*" />
+    </return>
+    <argument id="matrix_get::m" name="m">
+      <type name="kld_matrix_t" qualifier="*" ref="kld_matrix_t#kld_matrix_t" />
+    </argument>
+    <argument id="matrix_get::x" name="x">
+      <type builtin="yes" name="int" />
+    </argument>
+    <argument id="matrix_get::y" name="y">
+      <type builtin="yes" name="int" />
+    </argument>
+  </function>
+  <function id="matrix_get_col" name="matrix_get_col">
+    <return>
+      <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
+    </return>
+    <argument id="matrix_get_col::m" name="m">
+      <type name="kld_matrix_t" qualifier="*" ref="kld_matrix_t#kld_matrix_t" />
+    </argument>
+    <argument id="matrix_get_col::x" name="x">
+      <type builtin="yes" name="int" />
+    </argument>
+  </function>
+  <function id="matrix_get_row" name="matrix_get_row">
+    <return>
+      <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
+    </return>
+    <argument id="matrix_get_row::m" name="m">
+      <type name="kld_matrix_t" qualifier="*" ref="kld_matrix_t#kld_matrix_t" />
+    </argument>
+    <argument id="matrix_get_row::y" name="y">
+      <type builtin="yes" name="int" />
+    </argument>
+  </function>
+  <function id="matrix_insert_at" name="matrix_insert_at">
+    <return>
+      <type builtin="yes" name="void" />
+    </return>
+    <argument id="matrix_insert_at::m" name="m">
+      <type name="kld_matrix_t" qualifier="*" ref="kld_matrix_t#kld_matrix_t" />
+    </argument>
+    <argument id="matrix_insert_at::x" name="x">
+      <type builtin="yes" name="int" />
+    </argument>
+    <argument id="matrix_insert_at::y" name="y">
+      <type builtin="yes" name="int" />
+    </argument>
+    <argument id="matrix_insert_at::data" name="data">
+      <type builtin="yes" name="void" qualifier="*" />
+    </argument>
+  </function>
+  <function id="matrix_remove_at" name="matrix_remove_at">
+    <return>
+      <type builtin="yes" name="void" />
+    </return>
+    <argument id="matrix_remove_at::m" name="m">
+      <type name="kld_matrix_t" qualifier="*" ref="kld_matrix_t#kld_matrix_t" />
+    </argument>
+    <argument id="matrix_remove_at::x" name="x">
+      <type builtin="yes" name="int" />
+    </argument>
+    <argument id="matrix_remove_at::y" name="y">
+      <type builtin="yes" name="int" />
+    </argument>
+  </function>
+  <function id="new_matrix" name="new_matrix">
+    <return>
+      <type name="kld_matrix_t" qualifier="*" ref="kld_matrix_t#kld_matrix_t" />
+    </return>
+  </function>
+</typedef>
