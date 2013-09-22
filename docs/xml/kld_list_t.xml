@@ -53,6 +53,22 @@ Checks to see if a list is empty.
       <type name="kld_list_t" qualifier="*" ref="kld_list_t#kld_list_t" />
     </argument>
   </function>
+  <function id="list_prepend" name="list_prepend">
+    <doc>
+Prepends data to a list
+@list the list to prepend data to.
+@data the data to prepend to the list.
+</doc>
+    <return>
+      <type builtin="yes" name="void" />
+    </return>
+    <argument id="list_prepend::list" name="list">
+      <type name="kld_list_t" qualifier="*" ref="kld_list_t#kld_list_t" />
+    </argument>
+    <argument id="list_prepend::data" name="data">
+      <type builtin="yes" name="void" qualifier="*" />
+    </argument>
+  </function>
   <function id="list_reverse" name="list_reverse">
     <doc>
 Returns a reversed copy of the passed in list.

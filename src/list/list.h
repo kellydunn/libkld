@@ -58,6 +58,14 @@ void list_append(kld_list_t * list, void * data);
 
 
 /* 
+ * Prepends data to a list
+ * @list the list to prepend data to.
+ * @data the data to prepend to the list.
+ */
+void list_prepend(kld_list_t * list, void * data);
+
+
+/* 
  * Removes and returns the last <kld_list_node_t> in the <kld_list_t>.
  * @list the list to pop the last element from.
  * @return <kld_list_node_t> in the passed in list.

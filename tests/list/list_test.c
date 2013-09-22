@@ -118,6 +118,49 @@ START_TEST (test_append_2_pop_2_list) {
   fail_if(!list_is_empty(list), "List does not report itself as empty");
 } END_TEST
 
+// Ensure a single value is prepended to a list as expected
+// ✔ Head should be updated
+// ✔ Tail should be updated
+// ✔ Data should be the same
+START_TEST (test_prepend_list) {
+  kld_list_t * list = (kld_list_t *) new_list();
+  char * buf = "test data";
+  list_prepend(list, buf);
+  
+  fail_if(list->head == NULL, "Head is NULL");
+  fail_if(list->tail == NULL, "Tail is NULL");
+
+  fail_if(list->head->data != list->tail->data, "Head and Tail data have diverged");
+  fail_if(list->head->data != "test data", "Unexecpted list node value");
+
+  fail_if(list->size != 1, "Unexpected list size");
+} END_TEST
+
+// Ensure a two values can be prepended to a list as expected
+// ✔ Head should be updated
+// ✔ Tail should be updated
+// ✔ Data should be the same
+START_TEST (test_prepend_2_list) {
+  kld_list_t * list = (kld_list_t *) new_list();
+  char * buf2 = "test data2";
+  list_prepend(list, buf2);
+
+  char * buf = "test data";
+  list_prepend(list, buf);
+  
+  fail_if(list->head == NULL, "Head is NULL");
+  fail_if(list->tail == NULL, "Tail is NULL");
+
+  fail_if(list->head->data == list->tail->data, "Head and Tail data have not diverged");
+  fail_if(list->head->data != "test data", "Unexecpted head node value");
+  fail_if(list->tail->data != "test data2", "Unexecpted tail node value");
+
+  fail_if(list->head->next != list->tail, "Incorrect next node for Head");
+  fail_if(list->tail->prev != list->head, "Incorrect prev node for Tail");
+
+  fail_if(list->size != 2, "Unexpected list size");
+} END_TEST
+
 // Ensure a list can be reversed with the expected values
 // ✔ Data should be ordered as expected
 START_TEST (test_reverse_list) {
@@ -154,6 +197,9 @@ Suite * new_list_suite() {
   tcase_add_test(tc_core, test_append_1_pop_1_list);
   tcase_add_test(tc_core, test_append_2_pop_1_list);
   tcase_add_test(tc_core, test_append_2_pop_2_list);
+
+  tcase_add_test(tc_core, test_prepend_list);
+  tcase_add_test(tc_core, test_prepend_2_list);
 
   tcase_add_test(tc_core, test_reverse_list);
 
