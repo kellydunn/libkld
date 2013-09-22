@@ -14,6 +14,8 @@ void list_prepend(kld_list_t * list, void * val) {
 
   tmp->data = val;
 
+  // TODO Consider tail
+  //      And what happens when list is empty
   tmp->next = (kld_list_node_t*) list->head;
   list->head = (kld_list_node_t*) tmp;
   tmp->prev = (kld_list_node_t*) list->tail;
@@ -40,8 +42,13 @@ void list_append(kld_list_t * list, void * val) {
 
   tmp->data = val;
 
+  // TODO Both of these code paths have 
+  //      similar operations.  REFACTOR!
   if(list_is_empty(list)) {
-    list_init_with_one(list, tmp);
+    tmp->prev = (kld_list_node_t *) list->tail;
+    list->tail = (kld_list_node_t *) tmp;
+    tmp->next = (kld_list_node_t *) list->head;
+    list->head = (kld_list_node_t *) tmp;
    } else {
     list->tail->next = tmp;
     tmp->prev = (kld_list_node_t*) list->tail;
@@ -96,17 +103,6 @@ kld_list_t * list_reverse(kld_list_t * list) {
 
 bool list_is_empty(kld_list_t * list) {
   return (list->head == NULL && list->tail == NULL);
-}
-
-void list_init_with_one(kld_list_t * list, kld_list_node_t * node) {
-  list->head = node;
-  list->tail = node;
-
-  list->head->next = list->tail;
-  list->head->prev = list->tail;
-
-  list->tail->next = list->head;
-  list->tail->prev = list->head;
 }
 
 void list_clear(kld_list_t * list) {

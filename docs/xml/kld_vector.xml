@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<struct id="kld_vector" name="kld_vector" xmlns="http://jessevdk.github.com/cldoc/1.0">
+  <field id="kld_vector::data" name="data">
+    <type builtin="yes" name="void" qualifier="**" />
+  </field>
+  <field id="kld_vector::size" name="size">
+    <type builtin="yes" name="int" />
+  </field>
+  <field id="kld_vector::capacity" name="capacity">
+    <type builtin="yes" name="int" />
+  </field>
+</struct>
