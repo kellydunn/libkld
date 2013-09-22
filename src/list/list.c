@@ -1,7 +1,6 @@
 #include "stdlib.h"
 #include "list.h"
 
-// @return {kld_list_t*} list.  A new list.
 kld_list_t * new_list() {
   kld_list_t * list = (kld_list_t *) calloc(1, sizeof(kld_list_t));
   list_init(list);
@@ -14,7 +13,6 @@ void list_init(kld_list_t * list) {
   list->tail = NULL;
 }
 
-// Places the passed in val at the begining of the list
 void list_prepend(kld_list_t * list, void * val) {
   kld_list_node_t * tmp = (kld_list_node_t *) calloc(1, sizeof(kld_list_node_t));
 
@@ -27,7 +25,6 @@ void list_prepend(kld_list_t * list, void * val) {
   list->size++;
 }
 
-// Removes and returns the first element in the list
 kld_list_node_t * list_shift(kld_list_t * list) {
   kld_list_node_t * tmp = (kld_list_node_t *) calloc(1, sizeof(kld_list_node_t));
   
@@ -42,7 +39,6 @@ kld_list_node_t * list_shift(kld_list_t * list) {
   return tmp;
 }
 
-// Places the passed in val at the end of the list
 void list_append(kld_list_t * list, void * val) {
   kld_list_node_t * tmp = (kld_list_node_t *) calloc(1, sizeof(kld_list_node_t));
 
@@ -60,7 +56,6 @@ void list_append(kld_list_t * list, void * val) {
   list->size++;
 }
 
-// Removes and returns the last element in the list
 kld_list_node_t * list_pop(kld_list_t * list) {
   kld_list_node_t * tmp = (kld_list_node_t * ) calloc(1, sizeof(kld_list_node_t));
 
@@ -103,12 +98,10 @@ kld_list_t * list_reverse(kld_list_t * list) {
   return res;
 } 
 
-// Returns whether or not the list has no nodes
 bool list_is_empty(kld_list_t * list) {
   return (list->head == NULL && list->tail == NULL);
 }
 
-// Initializes the list to have a single node
 void list_init_with_one(kld_list_t * list, kld_list_node_t * node) {
   list->head = node;
   list->tail = node;
@@ -120,7 +113,6 @@ void list_init_with_one(kld_list_t * list, kld_list_node_t * node) {
   list->tail->prev = list->head;
 }
 
-// Completely clears list
 void list_clear(kld_list_t * list) {
   list->tail = NULL;
   list->head = NULL;  

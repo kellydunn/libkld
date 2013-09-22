@@ -12,6 +12,7 @@ all:
 
 clean:
 	rm -rf bin/*
+	rm -rf doc/*
 
 test:
 	$(CC) tests/list/list_test.c $(LDFLAGS) $(TEST_CFLAGS) $(TEST_TARGET_OBJS) -o bin/list_test
