@@ -3,7 +3,7 @@
   <doc>
 A Standard List implementation.
 
-<ref ref="kld_list_t#kld_list_t">kld_list_t</ref> is implemented as a doubly-linked circular linked list.
+<ref ref="kld_list_t#kld_list_t">kld_list_t</ref> is implemented as a circular, doubly-linked list.
 It's flexible in that it can serve as a stack or as a queue in addition to a linked list by calling
 `list_append` then `list_pop` (for FILO operations), and `list_append` then `list_shift` (for FIFO operations) respectively.
 

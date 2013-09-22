@@ -1,5 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <struct id="kld_vector" name="kld_vector" xmlns="http://jessevdk.github.com/cldoc/1.0">
+  <doc>
+A Standard implemetation of a Vector.
+
+<ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref> is most similar to an array list, or a dynamic array.  It grows and shrinks according to the number of its elements.
+As to
+</doc>
   <field id="kld_vector::data" name="data">
     <type builtin="yes" name="void" qualifier="**" />
   </field>
