@@ -30,6 +30,23 @@ START_TEST (test_append_list) {
   fail_if(list->size != 1, "Unexpected list size");
 } END_TEST
 
+// Ensure popping from a list returns the expected value
+// ✔ Data should be as expected
+// ✔ Size should be 0 
+START_TEST (test_pop_list) {
+  kld_list_t * list = (kld_list_t *) new_list();
+  char * buf = "test data";
+  char * buf2 = "test data2";
+
+  list_prepend(list, buf2);
+  list_prepend(list, buf);
+
+  kld_list_node_t * tmp = (kld_list_node_t *) list_pop(list);
+
+  fail_if(tmp == NULL, "Returned value is null");
+  fail_if(tmp->data != "test data2", "Unexpected data value for returned list node");
+} END_TEST
+
 // Ensure a single value is appended to a list as expected
 // ✔ Head should be updated
 // ✔ Tail should be updated
@@ -136,6 +153,24 @@ START_TEST (test_prepend_list) {
   fail_if(list->size != 1, "Unexpected list size");
 } END_TEST
 
+// Ensure that shifting off a list returns the expected data.
+// ✔ Head should be updated
+// ✔ Tail should be updated
+// ✔ Data should be the same
+START_TEST (test_shift_list) {
+  kld_list_t * list = (kld_list_t *) new_list();
+  char * buf = "test data";
+  char * buf2 = "test data2";
+
+  list_append(list, buf);
+  list_append(list, buf2);
+  
+  kld_list_node_t * tmp = (kld_list_node_t *) list_shift(list);
+
+  fail_if(tmp == NULL, "Returned value is null");
+  fail_if(tmp->data != "test data", "Unexpected data value for returned list node");  
+} END_TEST
+
 // Ensure a single value can be prepended and then shfited off one
 // ✔ Data should be as expected
 // ✔ Size should be 0 
@@ -144,11 +179,7 @@ START_TEST (test_prepend_1_shift_1_list) {
   char * buf = "test data";
 
   list_prepend(list, buf);
-  
-  kld_list_node_t * tmp = (kld_list_node_t *) list_shift(list);
-
-  fail_if(tmp == NULL, "Returned value is null");
-  fail_if(tmp->data != "test data", "Unexpected data value for returned list node");
+  list_shift(list);
 
   fail_if(list->size != 0, "Unexpected list size");
   fail_if(!list_is_empty(list), "List doesn't report as empty");
@@ -255,7 +286,7 @@ Suite * new_list_suite() {
   tcase_add_test(tc_core, test_append_list);
   tcase_add_test(tc_core, test_append_2_list);
 
-  // TODO Individual test case for pop
+  tcase_add_test(tc_core, test_pop_list);
 
   tcase_add_test(tc_core, test_append_1_pop_1_list);
   tcase_add_test(tc_core, test_append_2_pop_1_list);
@@ -264,7 +295,7 @@ Suite * new_list_suite() {
   tcase_add_test(tc_core, test_prepend_list);
   tcase_add_test(tc_core, test_prepend_2_list);
 
-  // TODO Individual test case for shift
+  tcase_add_test(tc_core, test_shift_list);
 
   tcase_add_test(tc_core, test_prepend_1_shift_1_list);
   tcase_add_test(tc_core, test_prepend_2_shift_1_list);
