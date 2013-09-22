@@ -3,9 +3,9 @@
   <type name="kld_list_node" ref="kld_list_node#kld_list_node" />
   <function id="list_pop" name="list_pop">
     <doc>
-Removes and returns the last <ref ref="kld_list_node_t#kld_list_node_t">kld_list_node_t</ref> in the <ref ref="kld_list_t#kld_list_t">kld_list_t</ref>.
+Removes and returns the last <ref ref="kld_list_node#kld_list_node">kld_list_node</ref> in the <ref ref="kld_list#kld_list">kld_list</ref>.
 @list the list to pop the last element from.
-@return <ref ref="kld_list_node_t#kld_list_node_t">kld_list_node_t</ref> in the passed in list.
+@return the last <ref ref="kld_list_node_t#kld_list_node_t">kld_list_node_t</ref> in the passed in list.
 </doc>
     <return>
       <type name="kld_list_node_t" qualifier="*" ref="kld_list_node_t#kld_list_node_t" />
@@ -16,7 +16,7 @@ Removes and returns the last <ref ref="kld_list_node_t#kld_list_node_t">kld_list
   </function>
   <function id="list_shift" name="list_shift">
     <doc>
-Removes and returns the first <ref ref="kld_list_node_t#kld_list_node_t">kld_list_node_t</ref> in the <ref ref="kld_list_t#kld_list_t">kld_list_t</ref>.
+Removes and returns the first <ref ref="kld_list_node#kld_list_node">kld_list_node</ref> in the <ref ref="kld_list#kld_list">kld_list</ref>.
 @list the <ref ref="kld_list_t#kld_list_t">kld_list_t</ref> in which to remove the first <ref ref="kld_list_node_t#kld_list_node_t">kld_list_node_t</ref> from.
 @return the first <ref ref="kld_list_node_t#kld_list_node_t">kld_list_node_t</ref> in the passed in <ref ref="kld_list_t#kld_list_t">kld_list_t</ref>
 </doc>

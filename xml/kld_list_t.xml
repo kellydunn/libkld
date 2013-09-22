@@ -18,10 +18,6 @@ Appends data to a list
     </argument>
   </function>
   <function id="list_clear" name="list_clear">
-    <doc>
-Removes
-
-</doc>
     <return>
       <type builtin="yes" name="void" />
     </return>
@@ -76,7 +72,7 @@ Returns a reversed copy of the passed in list.
   </function>
   <function id="new_list" name="new_list">
     <doc>
-Creates a new <ref ref="kld_list_t#kld_list_t">kld_list_t</ref>
+Creates a new <ref ref="kld_list#kld_list">kld_list</ref>
 @return a pointer to a new <ref ref="kld_list_t#kld_list_t">kld_list_t</ref>
 </doc>
     <return>
