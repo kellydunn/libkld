@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='utf-8'?>
+<typedef id="kld_list_t" name="kld_list_t" xmlns="http://jessevdk.github.com/cldoc/1.0">
+  <type name="kld_list" ref="kld_list#kld_list" />
+  <function id="list_append" name="list_append">
+    <doc>
+Appends data to a list
+@list the list to append data to.
+@data the data to append to the list.
+</doc>
+    <return>
+      <type builtin="yes" name="void" />
+    </return>
+    <argument id="list_append::list" name="list">
+      <type name="kld_list_t" qualifier="*" ref="kld_list_t#kld_list_t" />
+    </argument>
+    <argument id="list_append::data" name="data">
+      <type builtin="yes" name="void" qualifier="*" />
+    </argument>
+  </function>
+  <function id="list_clear" name="list_clear">
+    <doc>
+Removes
+
+</doc>
+    <return>
+      <type builtin="yes" name="void" />
+    </return>
+    <argument id="list_clear::list" name="list">
+      <type name="kld_list_t" qualifier="*" ref="kld_list_t#kld_list_t" />
+    </argument>
+  </function>
+  <function id="list_init" name="list_init">
+    <return>
+      <type builtin="yes" name="void" />
+    </return>
+    <argument id="list_init::list" name="list">
+      <type name="kld_list_t" qualifier="*" ref="kld_list_t#kld_list_t" />
+    </argument>
+  </function>
+  <function id="list_init_with_one" name="list_init_with_one">
+    <return>
+      <type builtin="yes" name="void" />
+    </return>
+    <argument id="list_init_with_one::list" name="list">
+      <type name="kld_list_t" qualifier="*" ref="kld_list_t#kld_list_t" />
+    </argument>
+    <argument id="list_init_with_one::node" name="node">
+      <type name="kld_list_node_t" qualifier="*" ref="kld_list_node_t#kld_list_node_t" />
+    </argument>
+  </function>
+  <function id="list_is_empty" name="list_is_empty">
+    <doc>
+Checks to see if a list is empty.
+@list the list to be checked.
+@return true if the list is empty, false otherwise.
+</doc>
+    <return>
+      <type builtin="yes" name="bool" />
+    </return>
+    <argument id="list_is_empty::list" name="list">
+      <type name="kld_list_t" qualifier="*" ref="kld_list_t#kld_list_t" />
+    </argument>
+  </function>
+  <function id="list_reverse" name="list_reverse">
+    <doc>
+Returns a reversed copy of the passed in list.
+@list the <ref ref="kld_list_t#kld_list_t">kld_list_t</ref> to be reversed.
+@return a new <ref ref="kld_list_t#kld_list_t">kld_list_t</ref> that is the reversed value of the passed in one.
+</doc>
+    <return>
+      <type name="kld_list_t" qualifier="*" ref="kld_list_t#kld_list_t" />
+    </return>
+    <argument id="list_reverse::list" name="list">
+      <type name="kld_list_t" qualifier="*" ref="kld_list_t#kld_list_t" />
+    </argument>
+  </function>
+  <function id="new_list" name="new_list">
+    <doc>
+Creates a new <ref ref="kld_list_t#kld_list_t">kld_list_t</ref>
+@return a pointer to a new <ref ref="kld_list_t#kld_list_t">kld_list_t</ref>
+</doc>
+    <return>
+      <type name="kld_list_t" qualifier="*" ref="kld_list_t#kld_list_t" />
+    </return>
+  </function>
+</typedef>
