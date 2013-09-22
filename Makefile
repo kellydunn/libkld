@@ -11,7 +11,8 @@ all:
 	$(CC) -c src/matrix/matrix.c $(LDFLAGS) -o bin/build/matrix/matrix.o
 
 clean:
-	rm -rf bin/*
+	rm -rf bin
+	rm -rf docs
 
 test:
 	$(CC) tests/list/list_test.c $(LDFLAGS) $(TEST_CFLAGS) $(TEST_TARGET_OBJS) -o bin/list_test
