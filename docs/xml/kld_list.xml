@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<struct id="kld_list" name="kld_list" xmlns="http://jessevdk.github.com/cldoc/1.0">
+  <field id="kld_list::size" name="size">
+    <type builtin="yes" name="int" />
+  </field>
+  <field id="kld_list::head" name="head">
+    <type name="kld_list_node_t" qualifier="*" ref="kld_list_node_t#kld_list_node_t" />
+  </field>
+  <field id="kld_list::tail" name="tail">
+    <type name="kld_list_node_t" qualifier="*" ref="kld_list_node_t#kld_list_node_t" />
+  </field>
+</struct>

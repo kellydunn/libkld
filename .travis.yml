@@ -1,0 +1,9 @@
+language: c
+
+compiler: clang
+
+script: make && make test
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq check
