@@ -41,9 +41,6 @@ struct kld_list_node {
 kld_list_t * new_list();
 
 
-void list_init(kld_list_t * list);
-
-
 /* 
  * Checks to see if a list is empty.
  * @list the list to be checked.

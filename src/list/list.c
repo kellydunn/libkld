@@ -3,14 +3,10 @@
 
 kld_list_t * new_list() {
   kld_list_t * list = (kld_list_t *) calloc(1, sizeof(kld_list_t));
-  list_init(list);
-  return list;
-}
-
-void list_init(kld_list_t * list) {
   list->size = 0;
   list->head = NULL;
   list->tail = NULL;
+  return list;
 }
 
 void list_prepend(kld_list_t * list, void * val) {
