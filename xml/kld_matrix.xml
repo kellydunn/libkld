@@ -1,12 +1,25 @@
 <?xml version='1.0' encoding='utf-8'?>
 <struct id="kld_matrix" name="kld_matrix" xmlns="http://jessevdk.github.com/cldoc/1.0">
-  <field id="kld_matrix::data" name="data">
+  <doc>
+A Somewhat Non Standard Implementation of a matrix
+
+The current design of this matrix is to use two collections of <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref>, one to represent all the rows inside of the <ref ref="kld_matrix_t#kld_matrix_t">kld_matrix_t</ref> and another to represent all the colums.
+This effectively doubles the memory footprint of a <ref ref="kld_matrix_t#kld_matrix_t">kld_matrix_t</ref>, requiring 2 bytes for each entry.
+However, due to the underlying implementation of a <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref>, we can now garuntee constant time operations for retrieving single elements inside of the <ref ref="kld_matrix_t#kld_matrix_t">kld_matrix_t</ref> as well as entire rows and columns.
+</doc>
+  <field id="kld_matrix::rows" name="rows">
+    <type name="kld_vector_t" qualifier="**" ref="kld_vector_t#kld_vector_t" />
+  </field>
+  <field id="kld_matrix::cols" name="cols">
     <type name="kld_vector_t" qualifier="**" ref="kld_vector_t#kld_vector_t" />
   </field>
   <field id="kld_matrix::x_bounds" name="x_bounds">
     <type builtin="yes" name="int" />
   </field>
   <field id="kld_matrix::y_bounds" name="y_bounds">
+    <type builtin="yes" name="int" />
+  </field>
+  <field id="kld_matrix::capacity" name="capacity">
     <type builtin="yes" name="int" />
   </field>
 </struct>
