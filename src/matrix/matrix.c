@@ -9,42 +9,25 @@ kld_matrix_t * new_matrix() {
   return m;
 }
 
-void matrix_append_row(kld_matrix_t * m, kld_vector_t * v) {
+void matrix_append_col(kld_matrix_t * m, kld_vector_t * v) {
   vector_append(*m->data, v);
 }
 
 kld_vector_t * matrix_get_row(kld_matrix_t * m, int y) {
-  return m->data[y];
+  // TODO Implement
+  return NULL;
 }
 
 kld_vector_t * matrix_get_col(kld_matrix_t * m, int x) {
-  kld_vector_t * res = (kld_vector_t *) new_vector();
-  
-  // TODO Oof, O(N) for getting a column?  
-  //      Lets research to see if we can do better.
-  int i;
-  for(i = 0; i < m->y_bounds; i++) {
-    vector_append(res, vector_get(matrix_get_row(m, i), x));
-  }
-
-  return res;
+  return m->data[x];
 }
 
 void * matrix_get(kld_matrix_t * m, int x, int y) {
-  return vector_get(matrix_get_row(m, y), x);
+  return vector_get(matrix_get_col(m, x), y);
 }
 
 void matrix_add(kld_matrix_t * m, int x, int y, void * data) {
-  if(m->y_bounds < y) {
-    int i;
-    for(i = m->y_bounds; i < y; i++) {
-      matrix_append_row(m, new_vector());
-      m->y_bounds++;
-    }
-  }
-
-  kld_vector_t * v = matrix_get_row(m, y);
-  vector_insert_at(v, x, data);
+  // TODO Implement
 }
 
 void matrix_remove(kld_matrix_t * m, int x, int y) {

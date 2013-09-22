@@ -12,7 +12,7 @@ struct kld_matrix {
 };
 
 kld_matrix_t * new_matrix();
-void matrix_append_row(kld_matrix_t * m, kld_vector_t * v);
+void matrix_append_col(kld_matrix_t * m, kld_vector_t * v);
 kld_vector_t * matrix_get_col(kld_matrix_t * m, int x);
 kld_vector_t * matrix_get_row(kld_matrix_t * m, int y);
 void * matrix_get(kld_matrix_t * m, int x, int y);
