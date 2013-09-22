@@ -11,7 +11,9 @@
 [![Build Status](https://travis-ci.org/kellydunn/libkld.png)](https://travis-ci.org/kellydunn/libkld)
 # what
 
-Rewriting common C structs in my side projects is getting a little tiresome, so I thought I'd have a single place where I keep my data structure implementations.  It's also good practice.
+My personal implementations of some common datastructures in the C programming language.
+
+Because why not.
 
 # installation
 
@@ -31,6 +33,11 @@ Currently, `libkld` has the following data structures:
   - list
   - vector
 
+Eventually, I'd like to have the following implemented with common operations:
+
+  - matrix
+  - graph
+
 # documentation
 
-I'm currently investigating the best option for documenting C projects.  The two I'm evaluating now are Doxygen and [docurium](https://github.com/libgit2/docurium). 
+You can checkout the documentation here: http://kellydunn.github.io/libkld 
