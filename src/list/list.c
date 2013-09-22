@@ -3,7 +3,7 @@
 
 // @return {kld_list_t*} list.  A new list.
 kld_list_t * new_list() {
-  kld_list_t * list = calloc(1, sizeof(kld_list_t));
+  kld_list_t * list = (kld_list_t *) calloc(1, sizeof(kld_list_t));
   list_init(list);
   return list;
 }
@@ -16,7 +16,7 @@ void list_init(kld_list_t * list) {
 
 // Places the passed in val at the begining of the list
 void list_prepend(kld_list_t * list, void * val) {
-  kld_list_node_t * tmp = calloc(1, sizeof(kld_list_node_t));
+  kld_list_node_t * tmp = (kld_list_node_t *) calloc(1, sizeof(kld_list_node_t));
 
   tmp->data = val;
 
@@ -29,7 +29,7 @@ void list_prepend(kld_list_t * list, void * val) {
 
 // Removes and returns the first element in the list
 kld_list_node_t * list_shift(kld_list_t * list) {
-  kld_list_node_t * tmp = calloc(1, sizeof(kld_list_node_t));
+  kld_list_node_t * tmp = (kld_list_node_t *) calloc(1, sizeof(kld_list_node_t));
   
   tmp = (kld_list_node_t*) list->head;
   list->head = (kld_list_node_t*) list->head->next;
@@ -44,7 +44,7 @@ kld_list_node_t * list_shift(kld_list_t * list) {
 
 // Places the passed in val at the end of the list
 void list_append(kld_list_t * list, void * val) {
-  kld_list_node_t * tmp = calloc(1, sizeof(kld_list_node_t));
+  kld_list_node_t * tmp = (kld_list_node_t *) calloc(1, sizeof(kld_list_node_t));
 
   tmp->data = val;
 
@@ -62,7 +62,7 @@ void list_append(kld_list_t * list, void * val) {
 
 // Removes and returns the last element in the list
 kld_list_node_t * list_pop(kld_list_t * list) {
-  kld_list_node_t * tmp = calloc(1, sizeof(kld_list_node_t));
+  kld_list_node_t * tmp = (kld_list_node_t * ) calloc(1, sizeof(kld_list_node_t));
 
   if(list_is_empty(list)) {
     return NULL;

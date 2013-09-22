@@ -25,3 +25,6 @@ test:
 install:
 	ar -cvq bin/libkld.a bin/build/**/*.o
 	sudo cp bin/libkld.a /usr/lib
+
+doc: 
+	cldoc generate -- --output ./docs src/**/*

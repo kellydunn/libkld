@@ -2,7 +2,7 @@
 #include "matrix.h"
 
 kld_matrix_t * new_matrix() {
-  kld_matrix_t * m = calloc(1, sizeof(kld_matrix_t *));
+  kld_matrix_t * m = (kld_matrix_t *) calloc(1, sizeof(kld_matrix_t *));
   m->data = NULL;
   m->y_bounds = 0;
   m->x_bounds = 0;
