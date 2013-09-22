@@ -1,5 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <index xmlns="http://jessevdk.github.com/cldoc/1.0">
+  <variable id="DEFAULT_MATRIX_CAPACITY" name="DEFAULT_MATRIX_CAPACITY">
+    <type builtin="yes" name="int" qualifier=" const" />
+  </variable>
   <variable id="DEFAULT_VECTOR_CAPACITY" name="DEFAULT_VECTOR_CAPACITY">
     <type builtin="yes" name="int" qualifier=" const" />
   </variable>
@@ -31,4 +34,9 @@
   <typedef name="kld_vector_t" ref="kld_vector_t#kld_vector_t">
     <type name="kld_vector" ref="kld_vector#kld_vector" />
   </typedef>
+  <function id="matrix_is_empty" name="matrix_is_empty">
+    <return>
+      <type builtin="yes" name="bool" />
+    </return>
+  </function>
 </index>

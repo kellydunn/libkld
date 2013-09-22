@@ -4,7 +4,8 @@
 
 START_TEST (test_new_matrix) {
   kld_matrix_t * m = (kld_matrix_t*) new_matrix();
-  fail_if(m->data != NULL, "Unexpected data after initialization");
+  fail_if(m->rows != NULL, "Unexpected rows after initialization");
+  fail_if(m->cols != NULL, "Unexpected cols after initialization");
 } END_TEST;
 
 Suite * new_matrix_suite() {
