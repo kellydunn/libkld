@@ -31,18 +31,54 @@ void list_prepend(kld_list_t * list, void * val) {
   list->size++;
 }
 
+kld_list_node_t * list_pop(kld_list_t * list) {
+  kld_list_node_t * tmp = (kld_list_node_t * ) calloc(1, sizeof(kld_list_node_t));
+
+  // TODO These operations are pretty similar to list_shift
+  //      Potentially refactor
+  if(list_is_empty(list)) {
+    return NULL;
+  } else {    
+    tmp = list->tail;
+
+    if(list->size == 1) {
+      list_clear(list);
+    } else {
+      list->tail = list->tail->prev;
+      list->tail->next = list->head;
+    }
+
+    tmp->next = NULL;
+    tmp->prev = NULL;
+
+    list->size--;
+    return tmp;
+  }
+}
+
 kld_list_node_t * list_shift(kld_list_t * list) {
   kld_list_node_t * tmp = (kld_list_node_t *) calloc(1, sizeof(kld_list_node_t));
-  
-  tmp = (kld_list_node_t*) list->head;
-  list->head = (kld_list_node_t*) list->head->next;
-  list->head->prev = (kld_list_node_t*) list->tail;
-  
-  tmp->next = NULL;
-  tmp->prev = NULL;
 
-  list->size--;
-  return tmp;
+  // TODO These operations are pretty similar to list_pop
+  //      Potentially refactor
+  if(list_is_empty(list)) {
+    return NULL;
+  } else {
+    tmp = list->head;
+
+    if(list->size == 1) {
+      list_clear(list);
+    } else {
+      list->head = list->head->next;
+      list->head->prev = list->tail;
+    }
+
+    tmp->next = NULL;
+    tmp->prev = NULL;
+    
+    list->size--;
+    return tmp;
+  }
 }
 
 void list_append(kld_list_t * list, void * val) {
@@ -67,28 +103,7 @@ void list_append(kld_list_t * list, void * val) {
   list->size++;
 }
 
-kld_list_node_t * list_pop(kld_list_t * list) {
-  kld_list_node_t * tmp = (kld_list_node_t * ) calloc(1, sizeof(kld_list_node_t));
 
-  if(list_is_empty(list)) {
-    return NULL;
-  } else {    
-    tmp = (kld_list_node_t *) list->tail;
-
-    if(list->size == 1) {
-      list_clear(list);
-    } else {
-      list->tail = (kld_list_node_t*) list->tail->prev;
-      list->tail->next = (kld_list_node_t*) list->head;
-    }
-
-    tmp->next = NULL;
-    tmp->prev = NULL;
-
-    list->size--;
-    return tmp;
-  }
-}
 
 kld_list_t * list_reverse(kld_list_t * list) {
   kld_list_node_t * current = list->head;
@@ -110,8 +125,7 @@ kld_list_t * list_reverse(kld_list_t * list) {
 } 
 
 bool list_is_empty(kld_list_t * list) {
-  // return (list->head == NULL && list->tail == NULL);
-  return (list->head == NULL || list->tail == NULL);
+  return (list->head == NULL && list->tail == NULL);
 }
 
 void list_clear(kld_list_t * list) {

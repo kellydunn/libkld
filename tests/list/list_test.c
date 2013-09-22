@@ -136,10 +136,47 @@ START_TEST (test_prepend_list) {
   fail_if(list->size != 1, "Unexpected list size");
 } END_TEST
 
+// Ensure a single value can be prepended and then shfited off one
+// ✔ Data should be as expected
+// ✔ Size should be 0 
+START_TEST (test_prepend_1_shift_1_list) {
+  kld_list_t * list = (kld_list_t *) new_list();
+  char * buf = "test data";
+
+  list_prepend(list, buf);
+  
+  kld_list_node_t * tmp = (kld_list_node_t *) list_shift(list);
+
+  fail_if(tmp == NULL, "Returned value is null");
+  fail_if(tmp->data != "test data", "Unexpected data value for returned list node");
+
+  fail_if(list->size != 0, "Unexpected list size");
+  fail_if(!list_is_empty(list), "List doesn't report as empty");
+} END_TEST
+
+// Ensure a values can be prepended twice and then shfited off twice
+// ✔ Data should be as expected
+// ✔ Size should be 0 
+START_TEST (test_prepend_2_shift_2_list) {
+  kld_list_t * list = (kld_list_t *) new_list();
+  char * buf = "test data";
+  char * buf2 = "test data2";
+
+  list_prepend(list, buf);
+  list_prepend(list, buf2);
+
+  list_shift(list);
+  list_shift(list);
+
+  fail_if(list->size != 0, "Unexpected list size");
+  fail_if(!list_is_empty(list), "List doesn't report as empty");
+} END_TEST
+
 // Ensure a two values can be prepended to a list as expected
 // ✔ Head should be updated
 // ✔ Tail should be updated
-// ✔ Data should be the same
+// ✔ Data should be different
+// ✔ Size should be updated 
 START_TEST (test_prepend_2_list) {
   kld_list_t * list = (kld_list_t *) new_list();
   char * buf2 = "test data2";
@@ -159,6 +196,30 @@ START_TEST (test_prepend_2_list) {
   fail_if(list->tail->prev != list->head, "Incorrect prev node for Tail");
 
   fail_if(list->size != 2, "Unexpected list size");
+} END_TEST
+
+// Ensure a two values can be prepended to a list as expected
+// ✔ Head should be updated
+// ✔ Tail should be updated
+// ✔ Data should be the same
+// ✔ Size should be updated 
+START_TEST (test_prepend_2_shift_1_list) {
+  kld_list_t * list = (kld_list_t *) new_list();
+  char * buf2 = "test data2";
+  list_prepend(list, buf2);
+
+  char * buf = "test data";
+  list_prepend(list, buf);
+
+  list_shift(list);
+  
+  fail_if(list->head == NULL, "Head is NULL");
+  fail_if(list->tail == NULL, "Tail is NULL");
+
+  fail_if(list->head->data != list->tail->data, "Head and Tail data have diverged");
+  fail_if(list->head->data != "test data2", "Unexecpted tail node value");
+
+  fail_if(list->size != 1, "Unexpected list size");
 } END_TEST
 
 // Ensure a list can be reversed with the expected values
@@ -194,12 +255,20 @@ Suite * new_list_suite() {
   tcase_add_test(tc_core, test_append_list);
   tcase_add_test(tc_core, test_append_2_list);
 
+  // TODO Individual test case for pop
+
   tcase_add_test(tc_core, test_append_1_pop_1_list);
   tcase_add_test(tc_core, test_append_2_pop_1_list);
   tcase_add_test(tc_core, test_append_2_pop_2_list);
 
   tcase_add_test(tc_core, test_prepend_list);
   tcase_add_test(tc_core, test_prepend_2_list);
+
+  // TODO Individual test case for shift
+
+  tcase_add_test(tc_core, test_prepend_1_shift_1_list);
+  tcase_add_test(tc_core, test_prepend_2_shift_1_list);
+  tcase_add_test(tc_core, test_prepend_2_shift_2_list);
 
   tcase_add_test(tc_core, test_reverse_list);
 
