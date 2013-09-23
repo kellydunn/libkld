@@ -32,10 +32,10 @@ Currently, `libkld` has the following data structures:
 
   - list
   - vector
+  - matrix
 
 Eventually, I'd like to have the following implemented with common operations:
 
-  - matrix
   - graph
 
 # documentation
