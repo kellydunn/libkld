@@ -17,12 +17,39 @@ START_TEST(test_matrix_is_empty) {
   fail_if(!matrix_is_empty(m), "Matrix should be empty after initialization.");
 } END_TEST
 
+START_TEST(test_matrix_append_row) {
+  kld_vector_t * v = (kld_vector_t *) new_vector();
+
+  int i; 
+  for(i = 0; i < 10; i++) {
+    char *buf = calloc(256, sizeof(char));
+    sprintf(buf, "test-%d", i);
+    vector_append(v, buf);
+  }
+
+  kld_matrix_t * m = (kld_matrix_t *) new_matrix();
+  matrix_append_row(m, v);
+  
+  fail_if(m->rows_bounds != 1, "Rows bounds were not updated after appending row.");
+  fail_if(m->rows_capacity != DEFAULT_MATRIX_ROWS_CAPACITY, "Unexpected rows capacity after appending a row.");
+
+  for(i = 0; i < 10; i++) {
+    char *buf = calloc(256, sizeof(char));
+    sprintf(buf, "test-%d", i);
+    fail_if(strcmp(vector_get(m->rows[0], i), buf) != 0, "Unexpected data after appending a row");
+  }
+  
+} END_TEST
+
 Suite * new_matrix_suite() {
   Suite * s = suite_create("matrix");
   
   TCase * tc_core = tcase_create("core");
   tcase_add_test(tc_core, test_new_matrix);
+
   tcase_add_test(tc_core, test_matrix_is_empty);
+
+  tcase_add_test(tc_core, test_matrix_append_row);
 
   suite_add_tcase(s, tc_core);
   
