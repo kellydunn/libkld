@@ -6,7 +6,7 @@
 const int DEFAULT_VECTOR_CAPACITY = 10;
 
 kld_vector_t * new_vector() {
-  kld_vector_t * v = (kld_vector_t *) calloc(1, sizeof(kld_vector_t*));
+  kld_vector_t * v = (kld_vector_t *) calloc(1, sizeof(kld_vector_t));
   v->size = 0;
   v->capacity = DEFAULT_VECTOR_CAPACITY;
   v->data = NULL;
@@ -30,7 +30,7 @@ void * vector_get(kld_vector_t *v, int i) {
 
 void vector_insert_at(kld_vector_t * v, int i, void * data) {
   if(vector_is_empty(v)) {
-    v->data = (void **) malloc(sizeof(void*) * DEFAULT_VECTOR_CAPACITY);
+    v->data = (void **) calloc(DEFAULT_VECTOR_CAPACITY, sizeof(void*));
   }
 
   if (i > v->size) {

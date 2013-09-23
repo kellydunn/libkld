@@ -21,9 +21,14 @@ typedef struct kld_matrix kld_matrix_t;
 struct kld_matrix {
   kld_vector_t ** rows;
   kld_vector_t ** cols;
-  int x_bounds;
-  int y_bounds;
+  int row_capacity;
+  int col_capacity;
+  int row_bounds;
+  int col_bounds;
 };
+
+extern const int DEFAULT_MATRIX_ROW_CAPACITY;
+extern const int DEFAULT_MATRIX_COL_CAPACITY;
 
 kld_matrix_t * new_matrix();
 bool matrix_is_empty();
