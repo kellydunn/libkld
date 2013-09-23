@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='utf-8'?>
+<typedef id="kld_matrix_t" name="kld_matrix_t" xmlns="http://jessevdk.github.com/cldoc/1.0">
+  <type name="kld_matrix" ref="kld_matrix#kld_matrix" />
+  <function id="matrix_append_col" name="matrix_append_col">
+    <brief> Appends a column **c** to <ref ref="kld_matrix#kld_matrix">kld_matrix</ref> **m**. In addition to appending, this operation will grow the rows of the matrix and append the values to each row as they are listed in the column **c**.</brief>
+    <return>
+      <type builtin="yes" name="void" />
+    </return>
+    <argument id="matrix_append_col::m" name="m">
+      <doc>the <ref ref="kld_matrix_t#kld_matrix_t">kld_matrix_t</ref> in which to append the column **c**.</doc>
+      <type name="kld_matrix_t" qualifier="*" ref="kld_matrix_t#kld_matrix_t" />
+    </argument>
+    <argument id="matrix_append_col::c" name="c">
+      <doc>the <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref> in which to append to the <ref ref="kld_matrix_t#kld_matrix_t">kld_matrix_t</ref> **m**.</doc>
+      <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
+    </argument>
+  </function>
+  <function id="matrix_append_row" name="matrix_append_row">
+    <brief> Appends a row **r** to <ref ref="kld_matrix#kld_matrix">kld_matrix</ref> **m**. In addition to appending, this operation will grow the columns of the matrix and append the values to each column as they are listed in the row **r**.</brief>
+    <return>
+      <type builtin="yes" name="void" />
+    </return>
+    <argument id="matrix_append_row::m" name="m">
+      <doc>the <ref ref="kld_matrix_t#kld_matrix_t">kld_matrix_t</ref> in which to append the row **r**.</doc>
+      <type name="kld_matrix_t" qualifier="*" ref="kld_matrix_t#kld_matrix_t" />
+    </argument>
+    <argument id="matrix_append_row::r" name="r">
+      <doc>the <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref> in which to append to the <ref ref="kld_matrix_t#kld_matrix_t">kld_matrix_t</ref> **m**.</doc>
+      <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
+    </argument>
+  </function>
+  <function id="matrix_get" name="matrix_get">
+    <brief> Returns the data at [**x**, **y**] in <ref ref="kld_matrix#kld_matrix">kld_matrix</ref> **m**.</brief>
+    <return>
+      <doc>the data at [**x**, **y**] in <ref ref="kld_matrix#kld_matrix">kld_matrix</ref> **m**.</doc>
+      <type builtin="yes" name="void" qualifier="*" />
+    </return>
+    <argument id="matrix_get::m" name="m">
+      <doc>the <ref ref="kld_matrix_t#kld_matrix_t">kld_matrix_t</ref> in which to retrieve the data.</doc>
+      <type name="kld_matrix_t" qualifier="*" ref="kld_matrix_t#kld_matrix_t" />
+    </argument>
+    <argument id="matrix_get::x" name="x">
+      <doc>the column position in which to retrieve the data in <ref ref="kld_matrix_t#kld_matrix_t">kld_matrix_t</ref> **m**.</doc>
+      <type builtin="yes" name="int" />
+    </argument>
+    <argument id="matrix_get::y" name="y">
+      <doc>the row position in which to retrieve the data in <ref ref="kld_matrix_t#kld_matrix_t">kld_matrix_t</ref> **m**.</doc>
+      <type builtin="yes" name="int" />
+    </argument>
+  </function>
+  <function id="matrix_get_col" name="matrix_get_col">
+    <brief> Returns the column at position **x** in the <ref ref="kld_matrix#kld_matrix">kld_matrix</ref> **m**.</brief>
+    <return>
+      <doc>the column at index **x** as a <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref></doc>
+      <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
+    </return>
+    <argument id="matrix_get_col::m" name="m">
+      <doc>the <ref ref="kld_matrix_t#kld_matrix_t">kld_matrix_t</ref> in which to retrieve the column.</doc>
+      <type name="kld_matrix_t" qualifier="*" ref="kld_matrix_t#kld_matrix_t" />
+    </argument>
+    <argument id="matrix_get_col::x" name="x">
+      <doc>the index in which to retrieve the column</doc>
+      <type builtin="yes" name="int" />
+    </argument>
+  </function>
+  <function id="matrix_get_row" name="matrix_get_row">
+    <brief> Returns the row at position **y** in the <ref ref="kld_matrix#kld_matrix">kld_matrix</ref> **m**.</brief>
+    <return>
+      <doc>the row at index **y** as a <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref></doc>
+      <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
+    </return>
+    <argument id="matrix_get_row::m" name="m">
+      <doc>the <ref ref="kld_matrix_t#kld_matrix_t">kld_matrix_t</ref> in which to retrieve the row.</doc>
+      <type name="kld_matrix_t" qualifier="*" ref="kld_matrix_t#kld_matrix_t" />
+    </argument>
+    <argument id="matrix_get_row::y" name="y">
+      <doc>the index in which to retrieve the row</doc>
+      <type builtin="yes" name="int" />
+    </argument>
+  </function>
+  <function id="matrix_is_empty" name="matrix_is_empty">
+    <brief> Returns whether or not a matrix is empty</brief>
+    <return>
+      <doc>true if the matrix is empty, and false if otherwise.</doc>
+      <type builtin="yes" name="bool" />
+    </return>
+    <argument id="matrix_is_empty::m" name="m">
+      <doc>the <ref ref="kld_matrix_t#kld_matrix_t">kld_matrix_t</ref> in which to test for emptiness.</doc>
+      <type name="kld_matrix_t" qualifier="*" ref="kld_matrix_t#kld_matrix_t" />
+    </argument>
+  </function>
+  <function id="new_matrix" name="new_matrix">
+    <brief> Creates and returns a new <ref ref="kld_matrix_t#kld_matrix_t">kld_matrix_t</ref>
+    </brief>
+    <return>
+      <doc>a pointer to a new <ref ref="kld_matrix_t#kld_matrix_t">kld_matrix_t</ref></doc>
+      <type name="kld_matrix_t" qualifier="*" ref="kld_matrix_t#kld_matrix_t" />
+    </return>
+  </function>
+</typedef>
