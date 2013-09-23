@@ -30,14 +30,35 @@ struct kld_matrix {
 extern const int DEFAULT_MATRIX_ROWS_CAPACITY;
 extern const int DEFAULT_MATRIX_COLS_CAPACITY;
 
+/* Creates and returns a new <kld_matrix_t>
+ *
+ * @return a pointer to a new <kld_matrix_t>
+ */
 kld_matrix_t * new_matrix();
-bool matrix_is_empty();
+
+/* Returns whether or not a matrix is empty
+ * @m the <kld_matrix_t> in which to test for emptiness.
+ *
+ * @return true if the matrix is empty, and false if otherwise.
+ */
+bool matrix_is_empty(kld_matrix_t * m);
+
+/* Appends a row **r** to <kld_matrix> **m**. In addition to appending, this operation will grow the columns of the matrix and append the values to each column as they are listed in the row **r**.
+ * @m the <kld_matrix_t> in which to append the row **r**.
+ * @r the <kld_vector_t> in which to append to the <kld_matrix_t> **m**.
+ */
+void matrix_append_row(kld_matrix_t * m, kld_vector_t * r);
+
+/* Appends a column **c** to <kld_matrix> **m**. In addition to appending, this operation will grow the rows of the matrix and append the values to each row as they are listed in the column **c**.
+ * @m the <kld_matrix_t> in which to append the column **c**.
+ * @c the <kld_vector_t> in which to append to the <kld_matrix_t> **m**.
+ */
+void matrix_append_col(kld_matrix_t * m, kld_vector_t * c);
+
 kld_vector_t * matrix_get_col(kld_matrix_t * m, int x);
 kld_vector_t * matrix_get_row(kld_matrix_t * m, int y);
 void * matrix_get(kld_matrix_t * m, int x, int y);
 void matrix_insert_at(kld_matrix_t * m, int x, int y, void * data);
 void matrix_remove_at(kld_matrix_t * m, int x, int y);
-void matrix_append_row(kld_matrix_t * m, kld_vector_t * r);
-void matrix_append_col(kld_matrix_t * m, kld_vector_t * c);
 
 #endif

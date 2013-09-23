@@ -20,6 +20,7 @@ struct kld_vector {
 extern const int DEFAULT_VECTOR_CAPACITY;
 
 /* Creates and returns a pointer to a new <kld_vector_t>
+ *
  * @return a pointer to a new <kld_vector_t>
  */
 kld_vector_t * new_vector();
@@ -27,6 +28,7 @@ kld_vector_t * new_vector();
 
 /* Returns whether or not the vector is empty
  * @v the vector in which to check emptiness.
+ *
  * @return true if the vector has no elements or false if otherwise.
  */
 bool vector_is_empty(kld_vector_t * v);
@@ -35,6 +37,7 @@ bool vector_is_empty(kld_vector_t * v);
 /* Returns the data stored at the index **i** inside of <kld_vector_t> **v**.
  * @v the <kld_vector_t> in which to get data.
  * @i the index of the <kld_vector_t> in which to get data.
+ *
  * @return the data stored at index **i** of <kld_vector_t> **v** passed in.
  */
 void * vector_get(kld_vector_t * v, int i);
