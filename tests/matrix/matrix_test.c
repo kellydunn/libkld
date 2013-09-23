@@ -42,6 +42,31 @@ START_TEST(test_matrix_append_row) {
   
 } END_TEST
 
+START_TEST(test_matrix_append_col) {
+  kld_vector_t * v = (kld_vector_t *) new_vector();
+
+  int i; 
+  for(i = 0; i < 10; i++) {
+    char *buf = calloc(256, sizeof(char));
+    sprintf(buf, "test-%d", i);
+    vector_append(v, buf);
+  }
+
+  kld_matrix_t * m = (kld_matrix_t *) new_matrix();
+  matrix_append_col(m, v);
+  
+  fail_if(m->cols_bounds != 1, "Cols bounds were not updated after appending col.");
+  fail_if(m->cols_capacity != DEFAULT_MATRIX_COLS_CAPACITY, "Unexpected cols capacity after appending a col.");
+
+  for(i = 0; i < 10; i++) {
+    char *buf = calloc(256, sizeof(char));
+    sprintf(buf, "test-%d", i);
+    fail_if(strcmp(vector_get(m->cols[0], i), buf) != 0, "Unexpected col data after appending a col");
+    fail_if(strcmp(vector_get(m->rows[i], 0), buf) != 0, "Unexpected row data after appending a col");
+  }
+  
+} END_TEST
+
 Suite * new_matrix_suite() {
   Suite * s = suite_create("matrix");
   
@@ -51,6 +76,8 @@ Suite * new_matrix_suite() {
   tcase_add_test(tc_core, test_matrix_is_empty);
 
   tcase_add_test(tc_core, test_matrix_append_row);
+
+  tcase_add_test(tc_core, test_matrix_append_col);
 
   suite_add_tcase(s, tc_core);
   

@@ -68,3 +68,40 @@ void matrix_append_row(kld_matrix_t * m, kld_vector_t * r) {
   // Increment row bounds
   m->rows_bounds++;
 }
+
+void matrix_append_col(kld_matrix_t * m, kld_vector_t * c) {
+  if(matrix_is_empty(m)) {
+    m->rows = (kld_vector_t **) calloc(DEFAULT_MATRIX_ROWS_CAPACITY, sizeof(kld_vector_t *));
+    m->cols = (kld_vector_t **) calloc(DEFAULT_MATRIX_COLS_CAPACITY, sizeof(kld_vector_t *));
+  }
+
+  if(m->cols_bounds == m->cols_capacity) {
+    matrix_grow_cols(m);
+  }
+  
+  // Keep Growing if our capacity is underneath the length of the col we're adding.
+  while(c->size >= m->rows_capacity) {
+    matrix_grow_rows(m);
+  }
+
+  // Set the bounds of the rows to the size of the col if the current bounds is less than the length of the col.
+  if(c->size > m->rows_bounds) {
+    m->rows_bounds = c->size;
+  }
+
+  // Insert col
+  m->cols[m->cols_bounds] = c;
+  
+  // Append to all rows accordingly
+  int i;
+  for(i = 0; i < c->size; i++) {
+    if(m->rows[i] == NULL) {
+      m->rows[i] = new_vector();
+    }
+
+    vector_append(m->rows[i], vector_get(c, i));
+  }
+  
+  // Increment row bounds
+  m->cols_bounds++;
+}
