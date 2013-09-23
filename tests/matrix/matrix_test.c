@@ -43,6 +43,58 @@ START_TEST(test_matrix_append_row) {
   
 } END_TEST
 
+START_TEST(test_matrix_get_row) {
+  kld_matrix_t * m = (kld_matrix_t *) new_matrix();
+
+  int i, j; 
+  for(i = 0; i < 10; i++) {
+    kld_vector_t * v = (kld_vector_t *) new_vector();
+
+    for(j = 0; j < 10; j++) {
+      char *buf = calloc(256, sizeof(char));
+      sprintf(buf, "test-%d-%d", i, j);
+      vector_append(v, buf);
+    }
+
+    matrix_append_row(m, v);
+  }
+ 
+  kld_vector_t * row = (kld_vector_t *) matrix_get_row(m, 0);
+ 
+  for(i = 0; i < 10; i++) {
+    char *buf = calloc(256, sizeof(char));
+    sprintf(buf, "test-%d-%d", 0, i);
+    fail_if(strcmp(vector_get(row, i), buf) != 0, "Unexpected row data after appending a row");
+  }
+  
+} END_TEST
+
+START_TEST(test_matrix_get_col) {
+  kld_matrix_t * m = (kld_matrix_t *) new_matrix();
+
+  int i, j; 
+  for(i = 0; i < 10; i++) {
+    kld_vector_t * v = (kld_vector_t *) new_vector();
+
+    for(j = 0; j < 10; j++) {
+      char *buf = calloc(256, sizeof(char));
+      sprintf(buf, "test-%d-%d", i, j);
+      vector_append(v, buf);
+    }
+
+    matrix_append_row(m, v);
+  }
+ 
+  kld_vector_t * col = (kld_vector_t *) matrix_get_col(m, 0);
+ 
+  for(i = 0; i < 10; i++) {
+    char *buf = calloc(256, sizeof(char));
+    sprintf(buf, "test-%d-%d", i, 0);
+    fail_if(strcmp(vector_get(col, i), buf) != 0, "Unexpected row data after appending a row");
+  }
+  
+} END_TEST
+
 START_TEST(test_matrix_append_col) {
   kld_vector_t * v = (kld_vector_t *) new_vector();
 
@@ -77,8 +129,14 @@ Suite * new_matrix_suite() {
   tcase_add_test(tc_core, test_matrix_is_empty);
 
   tcase_add_test(tc_core, test_matrix_append_row);
+  //tcase_add_test(tc_core, test_matrix_append_row_and_get_col);
+
+  tcase_add_test(tc_core, test_matrix_get_row);
 
   tcase_add_test(tc_core, test_matrix_append_col);
+  //tcase_add_test(tc_core, test_matrix_append_col_and_get_row);
+
+  tcase_add_test(tc_core, test_matrix_get_col);
 
   suite_add_tcase(s, tc_core);
   

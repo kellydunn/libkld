@@ -36,6 +36,7 @@ extern const int DEFAULT_MATRIX_COLS_CAPACITY;
  */
 kld_matrix_t * new_matrix();
 
+
 /* Returns whether or not a matrix is empty
  * @m the <kld_matrix_t> in which to test for emptiness.
  *
@@ -43,11 +44,13 @@ kld_matrix_t * new_matrix();
  */
 bool matrix_is_empty(kld_matrix_t * m);
 
+
 /* Appends a row **r** to <kld_matrix> **m**. In addition to appending, this operation will grow the columns of the matrix and append the values to each column as they are listed in the row **r**.
  * @m the <kld_matrix_t> in which to append the row **r**.
  * @r the <kld_vector_t> in which to append to the <kld_matrix_t> **m**.
  */
 void matrix_append_row(kld_matrix_t * m, kld_vector_t * r);
+
 
 /* Appends a column **c** to <kld_matrix> **m**. In addition to appending, this operation will grow the rows of the matrix and append the values to each row as they are listed in the column **c**.
  * @m the <kld_matrix_t> in which to append the column **c**.
@@ -55,8 +58,25 @@ void matrix_append_row(kld_matrix_t * m, kld_vector_t * r);
  */
 void matrix_append_col(kld_matrix_t * m, kld_vector_t * c);
 
+
+/* Returns the column at position **x** in the <kld_matrix> **m**.
+ * @m the <kld_matrix_t> in which to retrieve the column.
+ * @x the index in which to retrieve the column
+ *
+ * @return the column at index **x** as a <kld_vector_t> 
+ */
 kld_vector_t * matrix_get_col(kld_matrix_t * m, int x);
+
+
+/* Returns the row at position **y** in the <kld_matrix> **m**.
+ * @m the <kld_matrix_t> in which to retrieve the row.
+ * @y the index in which to retrieve the row
+ *
+ * @return the row at index **y** as a <kld_vector_t> 
+ */
 kld_vector_t * matrix_get_row(kld_matrix_t * m, int y);
+
+
 void * matrix_get(kld_matrix_t * m, int x, int y);
 void matrix_insert_at(kld_matrix_t * m, int x, int y, void * data);
 void matrix_remove_at(kld_matrix_t * m, int x, int y);

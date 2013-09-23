@@ -105,3 +105,11 @@ void matrix_append_col(kld_matrix_t * m, kld_vector_t * c) {
   // Increment row bounds
   m->cols_bounds++;
 }
+
+kld_vector_t * matrix_get_col(kld_matrix_t * m, int x) {
+  return m->cols[x];
+}
+
+kld_vector_t * matrix_get_row(kld_matrix_t * m, int y) {
+  return m->rows[y];
+}
