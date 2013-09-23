@@ -77,8 +77,13 @@ kld_vector_t * matrix_get_col(kld_matrix_t * m, int x);
 kld_vector_t * matrix_get_row(kld_matrix_t * m, int y);
 
 
+/* Returns the data at [**x**, **y**] in <kld_matrix> **m**.
+ * @m the <kld_matrix_t> in which to retrieve the data.
+ * @x the column position in which to retrieve the data in <kld_matrix_t> **m**.
+ * @y the row position in which to retrieve the data in <kld_matrix_t> **m**.
+ *
+ * @return the data at [**x**, **y**] in <kld_matrix> **m**.
+ */
 void * matrix_get(kld_matrix_t * m, int x, int y);
-void matrix_insert_at(kld_matrix_t * m, int x, int y, void * data);
-void matrix_remove_at(kld_matrix_t * m, int x, int y);
 
 #endif

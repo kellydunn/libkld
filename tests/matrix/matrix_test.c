@@ -120,6 +120,29 @@ START_TEST(test_matrix_append_col) {
   
 } END_TEST
 
+START_TEST(test_matrix_get) {
+  kld_matrix_t * m = (kld_matrix_t *) new_matrix();
+
+  int i, j; 
+  for(i = 0; i < 10; i++) {
+    kld_vector_t * v = (kld_vector_t *) new_vector();
+
+    for(j = 0; j < 10; j++) {
+      char *buf = calloc(256, sizeof(char));
+      sprintf(buf, "test-%d-%d", i, j);
+      vector_append(v, buf);
+    }
+
+    matrix_append_row(m, v);
+  }
+ 
+  void * data = (kld_vector_t *) matrix_get(m, 5, 5);
+  
+  char * buf = "test-5-5";
+
+  fail_if(strcmp((char*) data, buf) != 0, "Unexpected get data after appending many rows.");
+} END_TEST
+
 Suite * new_matrix_suite() {
   Suite * s = suite_create("matrix");
   
@@ -129,14 +152,14 @@ Suite * new_matrix_suite() {
   tcase_add_test(tc_core, test_matrix_is_empty);
 
   tcase_add_test(tc_core, test_matrix_append_row);
-  //tcase_add_test(tc_core, test_matrix_append_row_and_get_col);
 
   tcase_add_test(tc_core, test_matrix_get_row);
 
   tcase_add_test(tc_core, test_matrix_append_col);
-  //tcase_add_test(tc_core, test_matrix_append_col_and_get_row);
 
   tcase_add_test(tc_core, test_matrix_get_col);
+
+  tcase_add_test(tc_core, test_matrix_get);
 
   suite_add_tcase(s, tc_core);
   
