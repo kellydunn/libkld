@@ -4,6 +4,7 @@
   <function id="list_pop" name="list_pop">
     <brief> Removes and returns the last <ref ref="kld_list_node_t#kld_list_node_t">kld_list_node_t</ref> in the <ref ref="kld_list_t#kld_list_t">kld_list_t</ref>.</brief>
     <return>
+      <doc><ref ref="kld_list_node_t#kld_list_node_t">kld_list_node_t</ref> in the passed in list.</doc>
       <type name="kld_list_node_t" qualifier="*" ref="kld_list_node_t#kld_list_node_t" />
     </return>
     <argument id="list_pop::list" name="list">
@@ -14,6 +15,7 @@
   <function id="list_shift" name="list_shift">
     <brief> Removes and returns the first <ref ref="kld_list_node_t#kld_list_node_t">kld_list_node_t</ref> in the <ref ref="kld_list_t#kld_list_t">kld_list_t</ref>.</brief>
     <return>
+      <doc>the first <ref ref="kld_list_node_t#kld_list_node_t">kld_list_node_t</ref> in the passed in <ref ref="kld_list_t#kld_list_t">kld_list_t</ref></doc>
       <type name="kld_list_node_t" qualifier="*" ref="kld_list_node_t#kld_list_node_t" />
     </return>
     <argument id="list_shift::list" name="list">

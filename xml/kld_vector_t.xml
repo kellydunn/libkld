@@ -5,6 +5,7 @@
     <brief> Creates and returns a pointer to a new <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref>
     </brief>
     <return>
+      <doc>a pointer to a new <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref></doc>
       <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
     </return>
   </function>
@@ -25,6 +26,7 @@
   <function id="vector_get" name="vector_get">
     <brief> Returns the data stored at the index **i** inside of <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref> **v**.</brief>
     <return>
+      <doc>the data stored at index **i** of <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref> **v** passed in.</doc>
       <type builtin="yes" name="void" qualifier="*" />
     </return>
     <argument id="vector_get::v" name="v">
@@ -57,6 +59,7 @@
   <function id="vector_is_empty" name="vector_is_empty">
     <brief> Returns whether or not the vector is empty</brief>
     <return>
+      <doc>true if the vector has no elements or false if otherwise.</doc>
       <type builtin="yes" name="bool" />
     </return>
     <argument id="vector_is_empty::v" name="v">
