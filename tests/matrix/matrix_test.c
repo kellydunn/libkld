@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <check.h>
 #include "../../src/matrix/matrix.h"
 
