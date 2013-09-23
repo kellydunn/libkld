@@ -36,7 +36,8 @@ START_TEST(test_matrix_append_row) {
   for(i = 0; i < 10; i++) {
     char *buf = calloc(256, sizeof(char));
     sprintf(buf, "test-%d", i);
-    fail_if(strcmp(vector_get(m->rows[0], i), buf) != 0, "Unexpected data after appending a row");
+    fail_if(strcmp(vector_get(m->rows[0], i), buf) != 0, "Unexpected row data after appending a row");
+    fail_if(strcmp(vector_get(m->cols[i], 0), buf) != 0, "Unexpected col data after appending a row");
   }
   
 } END_TEST

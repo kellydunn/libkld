@@ -57,7 +57,7 @@ void matrix_append_row(kld_matrix_t * m, kld_vector_t * r) {
   
   // Append to all columns
   int i;
-  for(i = 0; i < r->size-1; i++) {
+  for(i = 0; i < r->size; i++) {
     if(m->cols[i] == NULL) {
       m->cols[i] = new_vector();
     }
