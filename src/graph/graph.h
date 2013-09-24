@@ -14,17 +14,14 @@ struct kld_graph {
 
 kld_graph_t * new_graph();
 bool graph_is_empty(kld_graph_t * g);
-
 bool graph_node_is_adjacent(kld_graph_t *g, int x, int y);
 kld_vector_t * graph_node_neighbors(kld_graph_t * g, int x);
 void graph_insert_edge(kld_graph_t * g, int x, int y, void * data);
 void graph_remove_edge(kld_graph_t * g, int x, int y);
 kld_graph_node_t * graph_get_node(kld_graph_t * g, int x);
 kld_graph_node_t * graph_set_node(kld_graph_t * g, int x, void * data);
-
-//Structures that associate values to the edges usually also provide:
-kld_graph_edge_t * graph_get_edge(kld_graph_t * g, kld_graph_node_t * x, kld_graph_node_t * y); //: returns the value associated to the edge (x,y).
-void graph_set_edge(kld_graph_t * g, int x, int y, void * data); //sets the value associated to the edge (x,y) to v.
+kld_graph_edge_t * graph_get_edge(kld_graph_t * g, kld_graph_node_t * x, kld_graph_node_t * y); 
+void graph_set_edge(kld_graph_t * g, int x, int y, void * data); 
      
  struct kld_graph_node {
    int id;

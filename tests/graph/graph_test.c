@@ -7,11 +7,18 @@ START_TEST(test_new_graph) {
   fail_if(g->adj_matrix != NULL, "Unexpected matrix upon initialization");
 } END_TEST
 
+START_TEST(test_graph_is_empty) {
+  kld_graph_t * g = (kld_graph_t *) new_graph();
+  fail_if(!graph_is_empty(g), "Graph is not empty upon initialization");
+} END_TEST
+
 Suite * new_graph_suite() {
   Suite * s = suite_create("graph");
 
   TCase * tc_core = tcase_create("Core");
   tcase_add_test(tc_core, test_new_graph);
+
+  tcase_add_test(tc_core, test_graph_is_empty);
 
   suite_add_tcase(s, tc_core);
 

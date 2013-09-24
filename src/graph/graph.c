@@ -6,4 +6,7 @@ kld_graph_t * new_graph() {
   g->adj_matrix = NULL;
   return g;
 }
-                                                                         
+
+bool graph_is_empty(kld_graph_t * g) {
+  return g->adj_matrix == NULL;
+}                                                                         
