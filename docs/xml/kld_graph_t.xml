@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='utf-8'?>
+<typedef id="kld_graph_t" name="kld_graph_t" xmlns="http://jessevdk.github.com/cldoc/1.0">
+  <type name="kld_graph" ref="kld_graph#kld_graph" />
+  <function id="graph_insert_edge" name="graph_insert_edge">
+    <return>
+      <type builtin="yes" name="void" />
+    </return>
+    <argument id="graph_insert_edge::g" name="g">
+      <type name="kld_graph_t" qualifier="*" ref="kld_graph_t#kld_graph_t" />
+    </argument>
+    <argument id="graph_insert_edge::x" name="x">
+      <type builtin="yes" name="int" />
+    </argument>
+    <argument id="graph_insert_edge::y" name="y">
+      <type builtin="yes" name="int" />
+    </argument>
+    <argument id="graph_insert_edge::data" name="data">
+      <type builtin="yes" name="void" qualifier="*" />
+    </argument>
+  </function>
+  <function id="graph_is_empty" name="graph_is_empty">
+    <return>
+      <type builtin="yes" name="bool" />
+    </return>
+    <argument id="graph_is_empty::g" name="g">
+      <type name="kld_graph_t" qualifier="*" ref="kld_graph_t#kld_graph_t" />
+    </argument>
+  </function>
+  <function id="graph_node_is_adjacent" name="graph_node_is_adjacent">
+    <return>
+      <type builtin="yes" name="bool" />
+    </return>
+    <argument id="graph_node_is_adjacent::g" name="g">
+      <type name="kld_graph_t" qualifier="*" ref="kld_graph_t#kld_graph_t" />
+    </argument>
+    <argument id="graph_node_is_adjacent::x" name="x">
+      <type builtin="yes" name="int" />
+    </argument>
+    <argument id="graph_node_is_adjacent::y" name="y">
+      <type builtin="yes" name="int" />
+    </argument>
+  </function>
+  <function id="graph_node_neighbors" name="graph_node_neighbors">
+    <return>
+      <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
+    </return>
+    <argument id="graph_node_neighbors::g" name="g">
+      <type name="kld_graph_t" qualifier="*" ref="kld_graph_t#kld_graph_t" />
+    </argument>
+    <argument id="graph_node_neighbors::x" name="x">
+      <type builtin="yes" name="int" />
+    </argument>
+  </function>
+  <function id="graph_remove_edge" name="graph_remove_edge">
+    <return>
+      <type builtin="yes" name="void" />
+    </return>
+    <argument id="graph_remove_edge::g" name="g">
+      <type name="kld_graph_t" qualifier="*" ref="kld_graph_t#kld_graph_t" />
+    </argument>
+    <argument id="graph_remove_edge::x" name="x">
+      <type builtin="yes" name="int" />
+    </argument>
+    <argument id="graph_remove_edge::y" name="y">
+      <type builtin="yes" name="int" />
+    </argument>
+  </function>
+  <function id="graph_set_edge" name="graph_set_edge">
+    <brief>: returns the value associated to the edge (x,y).</brief>
+    <return>
+      <type builtin="yes" name="void" />
+    </return>
+    <argument id="graph_set_edge::g" name="g">
+      <type name="kld_graph_t" qualifier="*" ref="kld_graph_t#kld_graph_t" />
+    </argument>
+    <argument id="graph_set_edge::x" name="x">
+      <type builtin="yes" name="int" />
+    </argument>
+    <argument id="graph_set_edge::y" name="y">
+      <type builtin="yes" name="int" />
+    </argument>
+    <argument id="graph_set_edge::data" name="data">
+      <type builtin="yes" name="void" qualifier="*" />
+    </argument>
+  </function>
+  <function id="new_graph" name="new_graph">
+    <return>
+      <type name="kld_graph_t" qualifier="*" ref="kld_graph_t#kld_graph_t" />
+    </return>
+  </function>
+</typedef>

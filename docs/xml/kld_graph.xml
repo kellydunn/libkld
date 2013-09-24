@@ -1,2 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<struct id="kld_graph" name="kld_graph" xmlns="http://jessevdk.github.com/cldoc/1.0" />
+<struct id="kld_graph" name="kld_graph" xmlns="http://jessevdk.github.com/cldoc/1.0">
+  <field id="kld_graph::adj_matrix" name="adj_matrix">
+    <type name="kld_matrix_t" qualifier="*" ref="kld_matrix_t#kld_matrix_t" />
+  </field>
+</struct>

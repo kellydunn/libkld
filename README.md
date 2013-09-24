@@ -37,6 +37,7 @@ Currently, `libkld` has the following data structures:
 Eventually, I'd like to have the following implemented with common operations:
 
   - graph
+  - fibonacci heap
 
 # documentation
 
