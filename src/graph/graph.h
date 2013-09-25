@@ -3,9 +3,11 @@
 
 #include "../common/common.h"
 #include "../matrix/matrix.h"
-#include "graph_node.h"
 
 typedef struct kld_graph kld_graph_t;
+
+// TODO Seperate these out into seperate headers and implementation files
+typedef struct kld_graph_node kld_graph_node_t;
 typedef struct kld_graph_edge kld_graph_edge_t;
 
 struct kld_graph {
@@ -59,10 +61,40 @@ void graph_insert_edge(kld_graph_t * g, kld_graph_node_t * n1, kld_graph_node_t 
  */
 void graph_remove_edge(kld_graph_t * g, kld_graph_node_t * n1, kld_graph_node_t * n2);
 
-kld_graph_node_t * graph_get_node(kld_graph_t * g, int x);
-void  graph_node_set_data(kld_graph_node_t * n, void * data);
+/* Returns the <kld_graph_node_t> of the passed in **id**.
+ * @g the <kld_graph_t> in which to retrieve the <kld_graph_node_t>
+ * @id the id of the desired <kld_graph_node_t>
+ *
+ * @return the <kld_graph_node_t> stored in the <kld_graph_t> **g** with the specified **id**.
+ */
+kld_graph_node_t * graph_get_node(kld_graph_t * g, int id);
+
+/* Returns the <kld_graph_edge_t> that spans between a source <kld_graph_node_t> **n1**, and arrives at a desitination <kld_graph_node_t> **n2**.
+ * @g the <kld_graph_node_t> in which to retrieve the edge
+ * @n1 the source <kld_graph_node_t> in which to retrieve the edge
+ * @n1 the destination <kld_graph_node_t> in which to retrieve the edge
+ *
+ * @return the <kld_graph_edge_t> that spans between **n1** and **n2**.
+ */
 kld_graph_edge_t * graph_get_edge(kld_graph_t * g, kld_graph_node_t * n1, kld_graph_node_t * n2); 
-void graph_edge_set_data(kld_graph_edge_t * e, void * data); 
+
+struct kld_graph_node {
+   int id;
+   void * data;
+
+  // Vertices are stored as records or objects, and every vertex stores a list of adjacent vertices. 
+  // This data structure allows the storage of additional data on the vertices.
+
+  // Vertices and edges are stored as records or objects. 
+  // Each vertex stores its incident edges, and each edge stores its incident vertices. 
+  // This data structure allows the storage of additional data on vertices and edges.
+};
+
+/* Creates and rEturns a new <kld_graph_node>
+ *
+ */
+kld_graph_node_t * new_graph_node(kld_graph_t * g);
+
      
 struct kld_graph_edge {
   void * data;

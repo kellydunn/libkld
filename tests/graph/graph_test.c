@@ -106,6 +106,39 @@ START_TEST(test_graph_remove_edge) {
   fail_if(e != NULL, "Edge should be NULL after inserting and then removing it.");
 } END_TEST
 
+START_TEST(test_graph_get_node) {
+  kld_graph_t * g = (kld_graph_t *) new_graph();
+
+  kld_graph_node_t * n1 = (kld_graph_node_t *) new_graph_node(g);
+  kld_graph_node_t * n2 = (kld_graph_node_t *) new_graph_node(g);
+
+  kld_graph_node_t * gn1 = (kld_graph_node_t *) graph_get_node(g, 0);
+  kld_graph_node_t * gn2 = (kld_graph_node_t *) graph_get_node(g, 1);
+
+  fail_if(gn1 != n1, "Incorrect node returned.");
+  fail_if(gn2 != n2, "Incorrect node returned.");
+} END_TEST
+
+START_TEST(test_graph_get_edge) {
+  kld_graph_t * g = (kld_graph_t *) new_graph();
+
+  int data = 1;
+  int * data_ref = &data;
+
+  kld_graph_node_t * n1 = (kld_graph_node_t *) new_graph_node(g);
+  kld_graph_node_t * n2 = (kld_graph_node_t *) new_graph_node(g);
+
+  graph_insert_edge(g, n1, n2, data_ref);
+
+  kld_graph_edge_t * e = (kld_graph_edge_t *) graph_get_edge(g, n1, n2);
+  kld_graph_edge_t * e2 = (kld_graph_edge_t *) graph_get_edge(g, n2, n1);
+  
+  fail_if(e == NULL, "Incorrect edge returned.");
+  fail_if(e->data == NULL, "Incorrect edge data returned.");
+  fail_if(e->data != data_ref, "Incorrect edge data returned.");
+  fail_if(e2 != NULL, "Incorrect edge returned.");
+} END_TEST
+
 Suite * new_graph_suite() {
   Suite * s = suite_create("graph");
 
@@ -121,6 +154,10 @@ Suite * new_graph_suite() {
   tcase_add_test(tc_core, test_graph_insert_edge);
 
   tcase_add_test(tc_core, test_graph_remove_edge);
+
+  tcase_add_test(tc_core, test_graph_get_node);
+
+  tcase_add_test(tc_core, test_graph_get_edge);
 
   suite_add_tcase(s, tc_core);
 

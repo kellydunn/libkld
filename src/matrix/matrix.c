@@ -115,6 +115,11 @@ kld_vector_t * matrix_get_row(kld_matrix_t * m, int y) {
 }
 
 void * matrix_get(kld_matrix_t * m, int x, int y) {
+  // TODO This is rather hacky, investigate why this is an issue and solve it.
+  if(m->cols[x] == NULL) {
+    return NULL; 
+  }
+
   return vector_get(m->cols[x], y);
 }
 
