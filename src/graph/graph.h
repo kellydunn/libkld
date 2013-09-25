@@ -37,8 +37,14 @@ bool graph_is_empty(kld_graph_t * g);
  */
 bool graph_node_is_adjacent(kld_graph_t *g, kld_graph_node_t * n1, kld_graph_node_t * n2);
 
+/* Returns a <kld_vector_t> of all the current neighbors of <kld_graph_node_t> **n** inside of <kld_graph_t> **g**.
+ * @g the <kld_graph_t> in which to retrieve neighbors.
+ * @n the <kld_graph_node_t> in which to retrieve neighbors.
+ *
+ * @return a <kld_vector_t> of all the current neighbors of <kld_graph_node_t> **n** inside of <kld_graph_t> **g**.
+ */
+kld_vector_t * graph_node_neighbors(kld_graph_t * g, kld_graph_node_t * n);
 
-kld_vector_t * graph_node_neighbors(kld_graph_t * g, kld_graph_node_t * x);
 void graph_insert_edge(kld_graph_t * g, int x, int y, void * data);
 void graph_remove_edge(kld_graph_t * g, int x, int y);
 kld_graph_node_t * graph_get_node(kld_graph_t * g, int x);
