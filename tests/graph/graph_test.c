@@ -77,13 +77,17 @@ START_TEST(test_graph_insert_edge) {
   kld_graph_t * g = (kld_graph_t *) new_graph();
 
   int data = 1;
+  int * data_ref = &data;
 
   kld_graph_node_t * n1 = (kld_graph_node_t *) new_graph_node(g);
   kld_graph_node_t * n2 = (kld_graph_node_t *) new_graph_node(g);
 
-  graph_insert_edge(g, n1, n2, &data);
+  graph_insert_edge(g, n1, n2, data_ref);
 
-  fail_if(graph_get_edge(g, n1, n2) == NULL, "Edge is NULL after inserting it.");
+  kld_graph_edge_t * e = (kld_graph_edge_t *) graph_get_edge(g, n1, n2);
+  fail_if(e == NULL, "Edge is NULL after inserting it.");
+  fail_if(e->data == NULL, "Edge data is NULL after inserting it.");
+  fail_if(e->data != data_ref, "Edge data is not the expected value.");
 } END_TEST
 
 Suite * new_graph_suite() {
