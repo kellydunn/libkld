@@ -6,7 +6,6 @@
 #include "graph_node.h"
 
 typedef struct kld_graph kld_graph_t;
-//typedef struct kld_graph_node kld_graph_node_t;
 typedef struct kld_graph_edge kld_graph_edge_t;
 
 struct kld_graph {
@@ -45,8 +44,21 @@ bool graph_node_is_adjacent(kld_graph_t *g, kld_graph_node_t * n1, kld_graph_nod
  */
 kld_vector_t * graph_node_neighbors(kld_graph_t * g, kld_graph_node_t * n);
 
+/* Inserts the passed int **data** as a <kld_graph_edge_t> into the <kld_graph_t> **g**
+ * @g the <kld_graph_t> in which to insert the **data**
+ * @n1 the source <kld_graph_node_t> in which to insert the edge
+ * @n2 the destination <kld_graph_node_t> in which to insert the edge
+ * @data the data to be stored at the new <kld_graph_edge_t>
+ */
 void graph_insert_edge(kld_graph_t * g, kld_graph_node_t * n1, kld_graph_node_t * n2, void * data);
-void graph_remove_edge(kld_graph_t * g, int x, int y);
+
+/* Removes a <kld_graph_edge_t> from the <kld_graph_t> **g** that connects **n1** to **n2**.
+ * @g the <kld_graph_t> in which to remove the <kld_graph_edge_t>
+ * @n1 the source <kld_graph_node_t> in which to remove the edge
+ * @n2 the destination <kld_graph_node_t> in which to remove the edge
+ */
+void graph_remove_edge(kld_graph_t * g, kld_graph_node_t * n1, kld_graph_node_t * n2);
+
 kld_graph_node_t * graph_get_node(kld_graph_t * g, int x);
 kld_graph_node_t * graph_set_node(kld_graph_t * g, int x, void * data);
 kld_graph_edge_t * graph_get_edge(kld_graph_t * g, kld_graph_node_t * x, kld_graph_node_t * y); 

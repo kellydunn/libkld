@@ -70,3 +70,7 @@ kld_graph_edge_t * new_graph_edge() {
   e->data = NULL;
   return e;
 }
+
+void graph_remove_edge(kld_graph_t * g, kld_graph_node_t * n1, kld_graph_node_t * n2) {
+  matrix_set(g->adj_matrix, n1->id, n2->id, NULL);
+}

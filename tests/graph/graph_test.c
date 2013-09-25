@@ -90,6 +90,22 @@ START_TEST(test_graph_insert_edge) {
   fail_if(e->data != data_ref, "Edge data is not the expected value.");
 } END_TEST
 
+START_TEST(test_graph_remove_edge) {
+  kld_graph_t * g = (kld_graph_t *) new_graph();
+
+  int data = 1;
+  int * data_ref = &data;
+
+  kld_graph_node_t * n1 = (kld_graph_node_t *) new_graph_node(g);
+  kld_graph_node_t * n2 = (kld_graph_node_t *) new_graph_node(g);
+
+  graph_insert_edge(g, n1, n2, data_ref);
+  graph_remove_edge(g, n1, n2);
+
+  kld_graph_edge_t * e = (kld_graph_edge_t *) graph_get_edge(g, n1, n2);
+  fail_if(e != NULL, "Edge should be NULL after inserting and then removing it.");
+} END_TEST
+
 Suite * new_graph_suite() {
   Suite * s = suite_create("graph");
 
@@ -103,6 +119,8 @@ Suite * new_graph_suite() {
   tcase_add_test(tc_core, test_graph_node_neighbors);
 
   tcase_add_test(tc_core, test_graph_insert_edge);
+
+  tcase_add_test(tc_core, test_graph_remove_edge);
 
   suite_add_tcase(s, tc_core);
 
