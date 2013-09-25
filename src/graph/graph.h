@@ -60,9 +60,9 @@ void graph_insert_edge(kld_graph_t * g, kld_graph_node_t * n1, kld_graph_node_t 
 void graph_remove_edge(kld_graph_t * g, kld_graph_node_t * n1, kld_graph_node_t * n2);
 
 kld_graph_node_t * graph_get_node(kld_graph_t * g, int x);
-kld_graph_node_t * graph_set_node(kld_graph_t * g, int x, void * data);
-kld_graph_edge_t * graph_get_edge(kld_graph_t * g, kld_graph_node_t * x, kld_graph_node_t * y); 
-void graph_set_edge(kld_graph_t * g, kld_graph_node_t * x, kld_graph_node_t * y, void * data); 
+void  graph_node_set_data(kld_graph_node_t * n, void * data);
+kld_graph_edge_t * graph_get_edge(kld_graph_t * g, kld_graph_node_t * n1, kld_graph_node_t * n2); 
+void graph_edge_set_data(kld_graph_edge_t * e, void * data); 
      
 struct kld_graph_edge {
   void * data;

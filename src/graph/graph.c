@@ -35,14 +35,6 @@ kld_graph_node_t * new_graph_node(kld_graph_t * g) {
   return n;
 }
 
-kld_graph_node_t * graph_get_node(kld_graph_t * g, int x) {
-  return (kld_graph_node_t *) vector_get(g->nodes, x);
-}
-
-kld_graph_edge_t * graph_get_edge(kld_graph_t * g, kld_graph_node_t * n1, kld_graph_node_t *n2) {
-  return (kld_graph_edge_t *) matrix_get(g->adj_matrix, n1->id, n2->id);
-}
-
 kld_vector_t * graph_node_neighbors(kld_graph_t * g, kld_graph_node_t * n) {
   // TODO determine how to get one-way neighbors
   kld_vector_t * res = (kld_vector_t *) new_vector();
@@ -73,4 +65,20 @@ kld_graph_edge_t * new_graph_edge() {
 
 void graph_remove_edge(kld_graph_t * g, kld_graph_node_t * n1, kld_graph_node_t * n2) {
   matrix_set(g->adj_matrix, n1->id, n2->id, NULL);
+}
+
+void graph_node_set_data(kld_graph_node_t * n, void * data) {
+  n->data = data;
+}
+
+kld_graph_node_t * graph_get_node(kld_graph_t * g, int x) {
+  return (kld_graph_node_t *) vector_get(g->nodes, x);
+}
+
+kld_graph_edge_t * graph_get_edge(kld_graph_t * g, kld_graph_node_t * n1, kld_graph_node_t *n2) {
+  return (kld_graph_edge_t *) matrix_get(g->adj_matrix, n1->id, n2->id);
+}
+
+void graph_edge_set_data(kld_graph_edge_t * e, void * data) {
+  e->data = data;
 }
