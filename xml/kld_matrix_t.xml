@@ -89,6 +89,23 @@
       <type name="kld_matrix_t" qualifier="*" ref="kld_matrix_t#kld_matrix_t" />
     </argument>
   </function>
+  <function id="matrix_set" name="matrix_set">
+    <return>
+      <type builtin="yes" name="void" />
+    </return>
+    <argument id="matrix_set::" name="">
+      <type name="kld_matrix_t" qualifier="*" ref="kld_matrix_t#kld_matrix_t" />
+    </argument>
+    <argument id="matrix_set::x" name="x">
+      <type builtin="yes" name="int" />
+    </argument>
+    <argument id="matrix_set::y" name="y">
+      <type builtin="yes" name="int" />
+    </argument>
+    <argument id="matrix_set::data" name="data">
+      <type builtin="yes" name="void" qualifier="*" />
+    </argument>
+  </function>
   <function id="new_matrix" name="new_matrix">
     <brief> Creates and returns a new <ref ref="kld_matrix_t#kld_matrix_t">kld_matrix_t</ref>
     </brief>

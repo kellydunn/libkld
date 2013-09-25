@@ -81,4 +81,18 @@
       <type builtin="yes" name="int" />
     </argument>
   </function>
+  <function id="vector_set" name="vector_set">
+    <return>
+      <type builtin="yes" name="void" />
+    </return>
+    <argument id="vector_set::v" name="v">
+      <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
+    </argument>
+    <argument id="vector_set::i" name="i">
+      <type builtin="yes" name="int" />
+    </argument>
+    <argument id="vector_set::data" name="data">
+      <type builtin="yes" name="void" qualifier="*" />
+    </argument>
+  </function>
 </typedef>
