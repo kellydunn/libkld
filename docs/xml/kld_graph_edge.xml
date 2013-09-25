@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<struct id="kld_graph_edge" name="kld_graph_edge" xmlns="http://jessevdk.github.com/cldoc/1.0">
+  <field id="kld_graph_edge::data" name="data">
+    <type builtin="yes" name="void" qualifier="*" />
+  </field>
+</struct>
