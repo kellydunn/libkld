@@ -58,3 +58,15 @@ kld_vector_t * graph_node_neighbors(kld_graph_t * g, kld_graph_node_t * n) {
 
   return res;
 }
+
+void graph_insert_edge(kld_graph_t * g, kld_graph_node_t * n1, kld_graph_node_t * n2, void * data) {
+  kld_graph_edge_t * e = new_graph_edge();
+  e->data = data;
+  matrix_set(g->adj_matrix, n1->id, n2->id, e);
+}
+
+kld_graph_edge_t * new_graph_edge() {
+  kld_graph_edge_t * e = (kld_graph_edge_t *) calloc(1, sizeof(kld_graph_edge_t));
+  e->data = NULL;
+  return e;
+}

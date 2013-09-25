@@ -73,6 +73,19 @@ START_TEST(test_graph_node_neighbors) {
 
 } END_TEST
 
+START_TEST(test_graph_insert_edge) {
+  kld_graph_t * g = (kld_graph_t *) new_graph();
+
+  int data = 1;
+
+  kld_graph_node_t * n1 = (kld_graph_node_t *) new_graph_node(g);
+  kld_graph_node_t * n2 = (kld_graph_node_t *) new_graph_node(g);
+
+  graph_insert_edge(g, n1, n2, &data);
+
+  fail_if(graph_get_edge(g, n1, n2) == NULL, "Edge is NULL after inserting it.");
+} END_TEST
+
 Suite * new_graph_suite() {
   Suite * s = suite_create("graph");
 
@@ -84,6 +97,8 @@ Suite * new_graph_suite() {
   tcase_add_test(tc_core, test_graph_node_is_adjacent);
 
   tcase_add_test(tc_core, test_graph_node_neighbors);
+
+  tcase_add_test(tc_core, test_graph_insert_edge);
 
   suite_add_tcase(s, tc_core);
 

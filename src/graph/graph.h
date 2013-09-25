@@ -45,7 +45,7 @@ bool graph_node_is_adjacent(kld_graph_t *g, kld_graph_node_t * n1, kld_graph_nod
  */
 kld_vector_t * graph_node_neighbors(kld_graph_t * g, kld_graph_node_t * n);
 
-void graph_insert_edge(kld_graph_t * g, int x, int y, void * data);
+void graph_insert_edge(kld_graph_t * g, kld_graph_node_t * n1, kld_graph_node_t * n2, void * data);
 void graph_remove_edge(kld_graph_t * g, int x, int y);
 kld_graph_node_t * graph_get_node(kld_graph_t * g, int x);
 kld_graph_node_t * graph_set_node(kld_graph_t * g, int x, void * data);
@@ -59,5 +59,7 @@ struct kld_graph_edge {
   // Each vertex stores its incident edges, and each edge stores its incident vertices. 
   // This data structure allows the storage of additional data on vertices and edges.
 };
+
+kld_graph_edge_t * new_graph_edge();
 
 #endif

@@ -96,5 +96,9 @@ void vector_remove_at(kld_vector_t * v, int i) {
 }
 
 void vector_set(kld_vector_t * v, int i, void * data) {
+  if(vector_is_empty(v)) {
+    v->data = (void **) calloc(DEFAULT_VECTOR_CAPACITY, sizeof(void*));
+  }
+
   v->data[i] = data;
 }

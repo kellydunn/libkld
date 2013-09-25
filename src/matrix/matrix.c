@@ -119,6 +119,40 @@ void * matrix_get(kld_matrix_t * m, int x, int y) {
 }
 
 void matrix_set(kld_matrix_t * m, int x, int y, void * data) {
+  // TODO Refactor
+  if(matrix_is_empty(m)) {
+    m->rows = (kld_vector_t **) calloc(DEFAULT_MATRIX_ROWS_CAPACITY, sizeof(kld_vector_t *));
+    m->cols = (kld_vector_t **) calloc(DEFAULT_MATRIX_COLS_CAPACITY, sizeof(kld_vector_t *));
+  }
+
+  // Keep Growing if our capacity is underneath the length of the col we're adding.
+  while(x >= m->rows_capacity) {
+    matrix_grow_rows(m);
+  }
+
+  // Keep Growing if our capacity is underneath the length of the row we're adding.
+  while(y >= m->cols_capacity) {
+    matrix_grow_cols(m);
+  }
+
+  // TODO This is kind of hacky; refactor to handle garuntees
+  if(m->cols[x] == NULL) {
+    m->cols[x] = new_vector();
+  }
+
+  // TODO This is kind of hacky; refactor to handle garuntees
+  if(m->rows[y] == NULL) {
+    m->rows[y] = new_vector();
+  }
+
   vector_set(m->cols[x], y, data);
   vector_set(m->rows[y], x, data);
+
+  if(x > m->cols_bounds) {
+    m->cols_bounds = x;
+  }
+
+  if(y > m->rows_bounds) {
+    m->rows_bounds = y;
+  }
 }
