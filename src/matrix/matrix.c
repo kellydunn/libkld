@@ -117,3 +117,8 @@ kld_vector_t * matrix_get_row(kld_matrix_t * m, int y) {
 void * matrix_get(kld_matrix_t * m, int x, int y) {
   return vector_get(m->cols[x], y);
 }
+
+void matrix_set(kld_matrix_t * m, int x, int y, void * data) {
+  vector_set(m->cols[x], y, data);
+  vector_set(m->rows[y], x, data);
+}

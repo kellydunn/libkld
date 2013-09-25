@@ -136,10 +136,8 @@ START_TEST(test_matrix_get) {
     matrix_append_row(m, v);
   }
  
-  void * data = (kld_vector_t *) matrix_get(m, 5, 5);
-  
+  char * data = (char *) matrix_get(m, 5, 5);
   char * buf = "test-5-5";
-
   fail_if(strcmp((char*) data, buf) != 0, "Unexpected get data after appending many rows.");
 } END_TEST
 

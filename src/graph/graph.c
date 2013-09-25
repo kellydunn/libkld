@@ -1,12 +1,44 @@
 #include <stdlib.h>
-#include "graph.h"
+ #include "graph.h"
 
 kld_graph_t * new_graph() {
   kld_graph_t * g = (kld_graph_t *) calloc(1, sizeof(kld_graph_t));
   g->adj_matrix = NULL;
+  g->nodes = NULL;
+  g->last_id = 0;
   return g;
 }
 
 bool graph_is_empty(kld_graph_t * g) {
-  return g->adj_matrix == NULL;
+  return g->adj_matrix == NULL && g->nodes == NULL;
+}
+
+bool graph_node_is_adjacent(kld_graph_t * g, kld_graph_node_t * n1, kld_graph_node_t * n2) {
+  // TODO how to determine one-way adjacency
+  void * data1 = matrix_get(g->adj_matrix, n1->id, n2->id);
+  void * data2 =  matrix_get(g->adj_matrix, n2->id, n1->id);
+
+  return (data1 != NULL && data2 != NULL);
 }                                                                         
+
+kld_graph_node_t * new_graph_node(kld_graph_t * g) {
+  kld_graph_node_t * n = (kld_graph_node_t *) calloc(1, sizeof(kld_graph_node_t));
+
+  if(graph_is_empty(g)) {
+    g->adj_matrix = new_matrix();
+    g->nodes = new_vector();
+  }
+
+  vector_append(g->nodes, n);
+  n->id = g->last_id;
+  g->last_id++;
+  return n;
+}
+
+kld_graph_node_t * graph_get_node(kld_graph_t * g, int x) {
+  return (kld_graph_node_t *) vector_get(g->nodes, x);
+}
+
+kld_graph_edge_t * graph_get_edge(kld_graph_t * g, kld_graph_node_t * n1, kld_graph_node_t *n2) {
+  return (kld_graph_edge_t *) matrix_get(g->adj_matrix, n1->id, n2->id);
+}

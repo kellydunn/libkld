@@ -94,3 +94,7 @@ void vector_remove_at(kld_vector_t * v, int i) {
     v->data = (void **) realloc(v->data, sizeof(void *) * v->capacity);
   }
 }
+
+void vector_set(kld_vector_t * v, int i, void * data) {
+  v->data[i] = data;
+}

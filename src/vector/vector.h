@@ -62,4 +62,6 @@ void vector_append(kld_vector_t * v, void * data);
  */
 void vector_remove_at(kld_vector_t * v, int i);
 
+void vector_set(kld_vector_t * v, int i, void * data);
+
 #endif 
