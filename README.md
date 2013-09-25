@@ -33,11 +33,12 @@ Currently, `libkld` has the following data structures:
   - list
   - vector
   - matrix
+  - graph
 
 Eventually, I'd like to have the following implemented with common operations:
 
-  - graph
   - fibonacci heap
+  - some sort of trie or tree
 
 # documentation
 
