@@ -34,6 +34,45 @@ START_TEST(test_graph_node_is_adjacent) {
   fail_if(!graph_node_is_adjacent(g, n1, n2), "Nodes are not adjacent when expected to be");
 } END_TEST
 
+START_TEST(test_graph_node_neighbors) {
+  kld_graph_t * g = (kld_graph_t *) new_graph();
+
+  int data = 1;
+
+  kld_graph_node_t * n1 = (kld_graph_node_t *) new_graph_node(g);
+  kld_graph_node_t * n2 = (kld_graph_node_t *) new_graph_node(g);
+  kld_graph_node_t * n3 = (kld_graph_node_t *) new_graph_node(g);
+
+  kld_vector_t * v = new_vector();
+  vector_append(v, NULL);
+  vector_append(v, &data);
+  vector_append(v, NULL);
+  matrix_append_row(g->adj_matrix, v);
+
+  kld_vector_t * v2 = new_vector();
+  vector_append(v2, &data);
+  vector_append(v2, NULL);
+  vector_append(v2, NULL);
+  matrix_append_row(g->adj_matrix, v2);
+
+  kld_vector_t * v3 = new_vector();
+  vector_append(v3, NULL);
+  vector_append(v3, NULL);
+  vector_append(v3, NULL);
+  matrix_append_row(g->adj_matrix, v3);
+
+  fail_if(graph_is_empty(g), "Graph should not be empty upon initialization");
+  
+  kld_vector_t * nbrs1 = (kld_vector_t *) graph_node_neighbors(g, n1);
+  kld_vector_t * nbrs2 = (kld_vector_t *) graph_node_neighbors(g, n2);
+  kld_vector_t * nbrs3 = (kld_vector_t *) graph_node_neighbors(g, n3);
+
+  fail_if(vector_get(nbrs1, 0) != n2, "After appending an edge from n1 to n2 in the graph, it should mark n2 as a neighbor of n1.");
+  fail_if(vector_get(nbrs2, 0) != n1, "After appending an edge from n2 to n1 in the graph, it should mark n1 as a neighbor of n2.");
+  fail_if(!vector_is_empty(nbrs3), "After appending null edges to the graph, it should have no neighbors");
+
+} END_TEST
+
 Suite * new_graph_suite() {
   Suite * s = suite_create("graph");
 
@@ -43,6 +82,8 @@ Suite * new_graph_suite() {
   tcase_add_test(tc_core, test_graph_is_empty);
 
   tcase_add_test(tc_core, test_graph_node_is_adjacent);
+
+  tcase_add_test(tc_core, test_graph_node_neighbors);
 
   suite_add_tcase(s, tc_core);
 

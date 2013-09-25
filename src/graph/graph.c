@@ -42,3 +42,19 @@ kld_graph_node_t * graph_get_node(kld_graph_t * g, int x) {
 kld_graph_edge_t * graph_get_edge(kld_graph_t * g, kld_graph_node_t * n1, kld_graph_node_t *n2) {
   return (kld_graph_edge_t *) matrix_get(g->adj_matrix, n1->id, n2->id);
 }
+
+kld_vector_t * graph_node_neighbors(kld_graph_t * g, kld_graph_node_t * n) {
+  // TODO determine how to get one-way neighbors
+  kld_vector_t * res = (kld_vector_t *) new_vector();
+  
+  kld_vector_t * adj = g->adj_matrix->cols[n->id];
+  int i;
+  for(i = 0; i < adj->size; i++) {
+    void * data = vector_get(adj, i);
+    if(data != NULL) {
+      vector_append(res, vector_get(g->nodes, i));
+    }
+  }
+
+  return res;
+}

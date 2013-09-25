@@ -3,9 +3,10 @@
 
 #include "../common/common.h"
 #include "../matrix/matrix.h"
+#include "graph_node.h"
 
 typedef struct kld_graph kld_graph_t;
-typedef struct kld_graph_node kld_graph_node_t;
+//typedef struct kld_graph_node kld_graph_node_t;
 typedef struct kld_graph_edge kld_graph_edge_t;
 
 struct kld_graph {
@@ -37,7 +38,7 @@ bool graph_is_empty(kld_graph_t * g);
 bool graph_node_is_adjacent(kld_graph_t *g, kld_graph_node_t * n1, kld_graph_node_t * n2);
 
 
-kld_vector_t * graph_node_neighbors(kld_graph_t * g, int x);
+kld_vector_t * graph_node_neighbors(kld_graph_t * g, kld_graph_node_t * x);
 void graph_insert_edge(kld_graph_t * g, int x, int y, void * data);
 void graph_remove_edge(kld_graph_t * g, int x, int y);
 kld_graph_node_t * graph_get_node(kld_graph_t * g, int x);
@@ -45,20 +46,6 @@ kld_graph_node_t * graph_set_node(kld_graph_t * g, int x, void * data);
 kld_graph_edge_t * graph_get_edge(kld_graph_t * g, kld_graph_node_t * x, kld_graph_node_t * y); 
 void graph_set_edge(kld_graph_t * g, kld_graph_node_t * x, kld_graph_node_t * y, void * data); 
      
-struct kld_graph_node {
-   int id;
-   void * data;
-
-  // Vertices are stored as records or objects, and every vertex stores a list of adjacent vertices. 
-  // This data structure allows the storage of additional data on the vertices.
-
-  // Vertices and edges are stored as records or objects. 
-  // Each vertex stores its incident edges, and each edge stores its incident vertices. 
-  // This data structure allows the storage of additional data on vertices and edges.
-};
-
-kld_graph_node_t * new_graph_node(kld_graph_t * g);
-
 struct kld_graph_edge {
   void * data;
 
