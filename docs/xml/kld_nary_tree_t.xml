@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<typedef id="kld_nary_tree_t" name="kld_nary_tree_t" xmlns="http://jessevdk.github.com/cldoc/1.0">
+  <type name="kld_nary_tree" ref="kld_nary_tree#kld_nary_tree" />
+  <function id="new_nary_tree" name="new_nary_tree">
+    <return>
+      <type name="kld_nary_tree_t" qualifier="*" ref="kld_nary_tree_t#kld_nary_tree_t" />
+    </return>
+    <argument id="new_nary_tree::degree" name="degree">
+      <type builtin="yes" name="int" />
+    </argument>
+  </function>
+</typedef>

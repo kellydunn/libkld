@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<struct id="kld_nary_tree_node" name="kld_nary_tree_node" xmlns="http://jessevdk.github.com/cldoc/1.0">
+  <field id="kld_nary_tree_node::parent" name="parent">
+    <type name="kld_nary_tree_node_t" qualifier="*" ref="index#kld_nary_tree_node_t" />
+  </field>
+  <field id="kld_nary_tree_node::children" name="children">
+    <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
+  </field>
+  <field id="kld_nary_tree_node::siblings" name="siblings">
+    <brief>TODO I guess we could just use arrays since we're restricting them to n</brief>
+    <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
+  </field>
+</struct>

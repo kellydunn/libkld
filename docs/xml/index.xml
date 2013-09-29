@@ -15,6 +15,8 @@
   <struct name="kld_list" ref="kld_list#kld_list" />
   <struct name="kld_list_node" ref="kld_list_node#kld_list_node" />
   <struct name="kld_matrix" ref="kld_matrix#kld_matrix" />
+  <struct name="kld_nary_tree" ref="kld_nary_tree#kld_nary_tree" />
+  <struct name="kld_nary_tree_node" ref="kld_nary_tree_node#kld_nary_tree_node" />
   <struct name="kld_vector" ref="kld_vector#kld_vector" />
   <typedef name="kld_graph_edge_t" ref="kld_graph_edge_t#kld_graph_edge_t">
     <type name="kld_graph_edge" ref="kld_graph_edge#kld_graph_edge" />
@@ -34,6 +36,12 @@
   </typedef>
   <typedef name="kld_matrix_t" ref="kld_matrix_t#kld_matrix_t">
     <type name="kld_matrix" ref="kld_matrix#kld_matrix" />
+  </typedef>
+  <typedef id="kld_nary_tree_node_t" name="kld_nary_tree_node_t">
+    <type name="kld_nary_tree_node" ref="kld_nary_tree_node#kld_nary_tree_node" />
+  </typedef>
+  <typedef name="kld_nary_tree_t" ref="kld_nary_tree_t#kld_nary_tree_t">
+    <type name="kld_nary_tree" ref="kld_nary_tree#kld_nary_tree" />
   </typedef>
   <typedef name="kld_vector_t" ref="kld_vector_t#kld_vector_t">
     <type name="kld_vector" ref="kld_vector#kld_vector" />

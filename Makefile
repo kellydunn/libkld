@@ -2,14 +2,15 @@ CC=clang
 LDFLAGS= -I/usr/local/lib:/usr/lib
 TEST_CFLAGS= -lcheck
 TARGET_OBJS=bin/build/**/*.o
-TEST_TARGET_OBJS=bin/build/list/*.o bin/build/vector/*.o bin/build/matrix/*.o bin/build/graph/*.o
+TEST_TARGET_OBJS=bin/build/list/*.o bin/build/vector/*.o bin/build/matrix/*.o bin/build/graph/*.o bin/build/tree/*.o
 
 all: 
-	mkdir -p bin/build/list bin/build/vector bin/build/matrix bin/build/graph/graph
+	mkdir -p bin/build/list bin/build/vector bin/build/matrix bin/build/graph bin/build/tree
 	$(CC) -c src/list/list.c $(LDFLAGS) -o bin/build/list/list.o	
 	$(CC) -c src/vector/vector.c $(LDFLAGS) -o bin/build/vector/vector.o
 	$(CC) -c src/matrix/matrix.c $(LDFLAGS) -o bin/build/matrix/matrix.o
 	$(CC) -c src/graph/graph.c $(LDFLAGS) -o bin/build/graph/graph.o
+	$(CC) -c src/tree/nary_tree.c $(LDFLAGS) -o bin/build/tree/nary_tree.o
 
 clean:
 	rm -rf bin
