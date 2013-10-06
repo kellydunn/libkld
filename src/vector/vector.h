@@ -69,8 +69,28 @@ void vector_remove_at(kld_vector_t * v, int i);
  */
 void vector_set(kld_vector_t * v, int i, void * data);
 
+/* Sorts the elements of the <kld_vector_t> by the means of the quicksort algorithm.  Asserts that vector data comparable by using the < operator.
+ * @v the <kld_vector_t> to sort.
+ */
 void vector_quicksort(kld_vector_t * v);
+
+/* Swaps the element at index **i** with the element at index **j** inside of the <kld_vector_t> **v**
+ * @v the <kld_vector_t> in which to swap the elements
+ * @i the index **i** in which to swap elements inside of the <kld_vector_t>
+ * @j the index **j** in which to swap elements inside of the <kld_vector_t>
+ */
 void vector_swap(kld_vector_t * v, int i, int j);
+
+/* Partitions the <kld_vector_t> such that all elements contained in a subarray 
+ * defined by bounds **left** and **right** that are less than or equal to the element at the **pivot** index are to the left of the **pivot** index
+ * and all the elements greater than the element at the **pivot** index are to the right of the **pivot** index.
+ * @v the <kld_vector_t> in which to partition.
+ * @left the left bounds of the subarray in which to partition.
+ * @right the right bounds of the subarray in which to partition.
+ * @pivot the pivot index in which to partition the <kld_vector_t>.
+ *
+ * @return returns the new index of the pivoted elment after partitioning.
+ */
 int vector_partition(kld_vector_t * v, int left, int right, int pivot);
 
 #endif 
