@@ -62,6 +62,15 @@ void vector_append(kld_vector_t * v, void * data);
  */
 void vector_remove_at(kld_vector_t * v, int i);
 
+/* Sets the data of a vector element at index **i**
+ * @v the <kld_vector_t> to set data
+ * @i the index in which to set the data
+ * @data the new data to set at element **i** inside of <kld_vector_t> **v**
+ */
 void vector_set(kld_vector_t * v, int i, void * data);
+
+void vector_quicksort(kld_vector_t * v);
+void vector_swap(kld_vector_t * v, int i, int j);
+int vector_partition(kld_vector_t * v, int left, int right, int pivot);
 
 #endif 

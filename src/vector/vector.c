@@ -107,3 +107,47 @@ void vector_set(kld_vector_t * v, int i, void * data) {
 
   v->data[i] = data;
 }
+
+void vector_quicksort_recursive(kld_vector_t * v, int left, int right) {
+  if(right > left) {
+    int pivot = right; // random int for performance
+    int index = vector_partition(v, left, right, pivot);
+    vector_quicksort_recursive(v, left, pivot -1);
+    vector_quicksort_recursive(v, pivot+1, right);
+  }
+}
+
+void vector_quicksort(kld_vector_t * v) {
+  if(v->size >= 2) {
+    vector_quicksort_recursive(v, 0, v->size - 1);
+  }
+}
+
+void vector_swap(kld_vector_t * v, int i, int j) {
+  void * tmp = vector_get(v, j);
+  vector_set(v, j, (void *) vector_get(v, i));
+  vector_set(v, i, tmp);
+}
+
+int vector_partition(kld_vector_t * v, int left, int right, int pivot) {
+  // TODO assert that vector data type is int
+  int pivot_data = *((int *) vector_get(v, pivot));
+
+  // move pivot to end
+  vector_swap(v, pivot, right);
+
+  int index = left;
+  
+  int i;
+  for(i=left; i < right; i++) {
+    void * current = vector_get(v, i);
+    int current_data = *((int *) current);
+    if(current_data < pivot_data){
+      vector_swap(v, i, index);
+      index++;
+    } 
+  }
+
+  vector_swap(v, index, right);
+  return index;
+}

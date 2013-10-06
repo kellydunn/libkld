@@ -186,6 +186,43 @@ START_TEST (test_vector_append_to_capacity_and_remove_at_one) {
   fail_if(v->capacity != DEFAULT_VECTOR_CAPACITY, "Expected capacity to decrease after removing below threshold.");
 } END_TEST
 
+START_TEST (test_vector_quicksort_empty) {
+  kld_vector_t * v = (kld_vector_t *) new_vector();
+
+  vector_quicksort(v);
+
+  fail_if(vector_is_empty(v) != true, "Expected vector to be empty after quicksorting it immediately after initialization");
+} END_TEST
+
+START_TEST (test_vector_quicksort_1) {
+  kld_vector_t * v = (kld_vector_t *) new_vector();
+  int data = 1;
+  vector_append(v, &data);
+
+  vector_quicksort(v);
+
+  fail_if((int *) vector_get(v, 0) != &data, "Expected first index of vector to be equal to the only element appeneded to it after quicksorting it");
+  fail_if(v->size != 1, "Expected vector to retain size after quicksorting");
+} END_TEST
+
+START_TEST (test_vector_quicksort_10) {
+  kld_vector_t * v = (kld_vector_t *) new_vector();
+  int i;
+
+  for(i = 10; i >0; i--) {
+    int * data = calloc(1, sizeof(int));
+    *data = i;
+    vector_append(v, data);
+  }
+
+  vector_quicksort(v);
+
+  for(i = 1; i < 11; i++) {
+    int data  = *((int *) vector_get(v, i-1));
+    fail_if(data != i, "Expected sorted values after calling quicksort on an array with 10 elements");
+  }
+} END_TEST
+
 Suite * new_vector_suite() {
   Suite * s = suite_create("vector");
   
@@ -205,6 +242,10 @@ Suite * new_vector_suite() {
   tcase_add_test(tc_core, test_vector_append_one_and_remove_at_one);
   tcase_add_test(tc_core, test_vector_append_two_and_remove_at_one);
   tcase_add_test(tc_core, test_vector_append_to_capacity_and_remove_at_one);
+
+  tcase_add_test(tc_core, test_vector_quicksort_empty);
+  tcase_add_test(tc_core, test_vector_quicksort_1);
+  tcase_add_test(tc_core, test_vector_quicksort_10);
 
   suite_add_tcase(s, tc_core);
 
