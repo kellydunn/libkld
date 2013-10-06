@@ -88,9 +88,7 @@ void vector_quicksort(kld_vector_t * v);
  */
 void vector_swap(kld_vector_t * v, int i, int j);
 
-/* Partitions the <kld_vector_t> such that all elements contained in a subarray 
- * defined by bounds **left** and **right** that are less than or equal to the element at the **pivot** index are to the left of the **pivot** index
- * and all the elements greater than the element at the **pivot** index are to the right of the **pivot** index.
+/* Partitions the <kld_vector_t> such that all elements contained in a subarray defined by bounds **left** and **right** that are less than or equal to the element at the **pivot** index are to the left of the **pivot** index and all the elements greater than the element at the **pivot** index are to the right of the **pivot** index.
  * @v the <kld_vector_t> in which to partition.
  * @left the left bounds of the subarray in which to partition.
  * @right the right bounds of the subarray in which to partition.
