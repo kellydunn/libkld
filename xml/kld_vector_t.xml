@@ -67,6 +67,48 @@
       <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
     </argument>
   </function>
+  <function id="vector_is_sorted" name="vector_is_sorted">
+    <brief> Returns whether or not a vector is sorted.</brief>
+    <return>
+      <doc>true if the <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref> **v** is sorted, otherwise false.</doc>
+      <type builtin="yes" name="bool" />
+    </return>
+    <argument id="vector_is_sorted::v" name="v">
+      <doc>the <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref> in which to test for sortedness.</doc>
+      <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
+    </argument>
+  </function>
+  <function id="vector_partition" name="vector_partition">
+    <brief> Partitions the <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref> such that all elements contained in a subarray</brief>
+    <doc>defined by bounds **left** and **right** that are less than or equal to the element at the **pivot** index are to the left of the **pivot** index
+and all the elements greater than the element at the **pivot** index are to the right of the **pivot** index.
+</doc>
+    <return>
+      <type builtin="yes" name="int" />
+    </return>
+    <argument id="vector_partition::v" name="v">
+      <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
+    </argument>
+    <argument id="vector_partition::left" name="left">
+      <type builtin="yes" name="int" />
+    </argument>
+    <argument id="vector_partition::right" name="right">
+      <type builtin="yes" name="int" />
+    </argument>
+    <argument id="vector_partition::pivot" name="pivot">
+      <type builtin="yes" name="int" />
+    </argument>
+  </function>
+  <function id="vector_quicksort" name="vector_quicksort">
+    <brief> Sorts the elements of the <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref> by the means of the quicksort algorithm.  Asserts that vector data comparable by using the &lt; operator.</brief>
+    <return>
+      <type builtin="yes" name="void" />
+    </return>
+    <argument id="vector_quicksort::v" name="v">
+      <doc>the <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref> to sort.</doc>
+      <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
+    </argument>
+  </function>
   <function id="vector_remove_at" name="vector_remove_at">
     <brief> Removes the passed in **data** at index **i** in vector **v**.</brief>
     <return>
@@ -82,17 +124,39 @@
     </argument>
   </function>
   <function id="vector_set" name="vector_set">
+    <brief> Sets the data of a vector element at index **i**</brief>
     <return>
       <type builtin="yes" name="void" />
     </return>
     <argument id="vector_set::v" name="v">
+      <doc>the <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref> to set data</doc>
       <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
     </argument>
     <argument id="vector_set::i" name="i">
+      <doc>the index in which to set the data</doc>
       <type builtin="yes" name="int" />
     </argument>
     <argument id="vector_set::data" name="data">
+      <doc>the new data to set at element **i** inside of <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref> **v**</doc>
       <type builtin="yes" name="void" qualifier="*" />
+    </argument>
+  </function>
+  <function id="vector_swap" name="vector_swap">
+    <brief> Swaps the element at index **i** with the element at index **j** inside of the <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref> **v**</brief>
+    <return>
+      <type builtin="yes" name="void" />
+    </return>
+    <argument id="vector_swap::v" name="v">
+      <doc>the <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref> in which to swap the elements</doc>
+      <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
+    </argument>
+    <argument id="vector_swap::i" name="i">
+      <doc>the index **i** in which to swap elements inside of the <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref></doc>
+      <type builtin="yes" name="int" />
+    </argument>
+    <argument id="vector_swap::j" name="j">
+      <doc>the index **j** in which to swap elements inside of the <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref></doc>
+      <type builtin="yes" name="int" />
     </argument>
   </function>
 </typedef>

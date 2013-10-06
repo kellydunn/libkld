@@ -15,6 +15,10 @@
   <struct name="kld_list" ref="kld_list#kld_list" />
   <struct name="kld_list_node" ref="kld_list_node#kld_list_node" />
   <struct name="kld_matrix" ref="kld_matrix#kld_matrix" />
+  <struct name="kld_tree" ref="kld_tree#kld_tree">
+    <brief> A standard k-nary tree implementation.</brief>
+  </struct>
+  <struct name="kld_tree_node" ref="kld_tree_node#kld_tree_node" />
   <struct name="kld_vector" ref="kld_vector#kld_vector" />
   <typedef name="kld_graph_edge_t" ref="kld_graph_edge_t#kld_graph_edge_t">
     <type name="kld_graph_edge" ref="kld_graph_edge#kld_graph_edge" />
@@ -35,7 +39,32 @@
   <typedef name="kld_matrix_t" ref="kld_matrix_t#kld_matrix_t">
     <type name="kld_matrix" ref="kld_matrix#kld_matrix" />
   </typedef>
+  <typedef name="kld_tree_node_t" ref="kld_tree_node_t#kld_tree_node_t">
+    <type name="kld_tree_node" ref="kld_tree_node#kld_tree_node" />
+  </typedef>
+  <typedef name="kld_tree_t" ref="kld_tree_t#kld_tree_t">
+    <type name="kld_tree" ref="kld_tree#kld_tree" />
+  </typedef>
   <typedef name="kld_vector_t" ref="kld_vector_t#kld_vector_t">
     <type name="kld_vector" ref="kld_vector#kld_vector" />
   </typedef>
+  <function id="byte_array_len" name="byte_array_len">
+    <return>
+      <type builtin="yes" name="int" />
+    </return>
+    <argument id="byte_array_len::a" name="a">
+      <type builtin="yes" name="unsigned char" qualifier="*" />
+    </argument>
+  </function>
+  <function id="byte_cmp" name="byte_cmp">
+    <return>
+      <type builtin="yes" name="int" />
+    </return>
+    <argument id="byte_cmp::a" name="a">
+      <type builtin="yes" name="unsigned char" qualifier="*" />
+    </argument>
+    <argument id="byte_cmp::b" name="b">
+      <type builtin="yes" name="unsigned char" qualifier="*" />
+    </argument>
+  </function>
 </index>

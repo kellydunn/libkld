@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<struct id="kld_tree" name="kld_tree" xmlns="http://jessevdk.github.com/cldoc/1.0">
+  <brief> A standard k-nary tree implementation.</brief>
+  <field id="kld_tree::root" name="root">
+    <type name="kld_tree_node_t" qualifier="*" ref="kld_tree_node_t#kld_tree_node_t" />
+  </field>
+  <field id="kld_tree::num_children" name="num_children">
+    <type builtin="yes" name="int" />
+  </field>
+  <field id="kld_tree::size" name="size">
+    <type builtin="yes" name="int" />
+  </field>
+</struct>
