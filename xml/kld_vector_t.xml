@@ -79,23 +79,25 @@
     </argument>
   </function>
   <function id="vector_partition" name="vector_partition">
-    <brief> Partitions the <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref> such that all elements contained in a subarray</brief>
-    <doc>defined by bounds **left** and **right** that are less than or equal to the element at the **pivot** index are to the left of the **pivot** index
-and all the elements greater than the element at the **pivot** index are to the right of the **pivot** index.
-</doc>
+    <brief> Partitions the <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref> such that all elements contained in a subarray defined by bounds **left** and **right** that are less than or equal to the element at the **pivot** index are to the left of the **pivot** index and all the elements greater than the element at the **pivot** index are to the right of the **pivot** index.</brief>
     <return>
+      <doc>returns the new index of the pivoted elment after partitioning.</doc>
       <type builtin="yes" name="int" />
     </return>
     <argument id="vector_partition::v" name="v">
+      <doc>the <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref> in which to partition.</doc>
       <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
     </argument>
     <argument id="vector_partition::left" name="left">
+      <doc>the left bounds of the subarray in which to partition.</doc>
       <type builtin="yes" name="int" />
     </argument>
     <argument id="vector_partition::right" name="right">
+      <doc>the right bounds of the subarray in which to partition.</doc>
       <type builtin="yes" name="int" />
     </argument>
     <argument id="vector_partition::pivot" name="pivot">
+      <doc>the pivot index in which to partition the <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref>.</doc>
       <type builtin="yes" name="int" />
     </argument>
   </function>
