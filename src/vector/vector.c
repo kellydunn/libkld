@@ -25,6 +25,11 @@ void vector_grow(kld_vector_t * v) {
 }
 
 void * vector_get(kld_vector_t *v, int i) {
+  // TODO Determine if this is acceptable functionality for all data structures
+  if(vector_is_empty(v)) {
+    return NULL;
+  }
+
   return v->data[i];
 }
 
