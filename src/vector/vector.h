@@ -69,6 +69,13 @@ void vector_remove_at(kld_vector_t * v, int i);
  */
 void vector_set(kld_vector_t * v, int i, void * data);
 
+/* Returns whether or not a vector is sorted.
+ * @v the <kld_vector_t> in which to test for sortedness.
+ *
+ * @return true if the <kld_vector_t> **v** is sorted, otherwise false.
+ */
+bool vector_is_sorted(kld_vector_t * v);
+
 /* Sorts the elements of the <kld_vector_t> by the means of the quicksort algorithm.  Asserts that vector data comparable by using the < operator.
  * @v the <kld_vector_t> to sort.
  */

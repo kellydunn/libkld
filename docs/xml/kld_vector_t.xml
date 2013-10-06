@@ -67,6 +67,17 @@
       <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
     </argument>
   </function>
+  <function id="vector_is_sorted" name="vector_is_sorted">
+    <brief> Returns whether or not a vector is sorted.</brief>
+    <return>
+      <doc>true if the <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref> **v** is sorted, otherwise false.</doc>
+      <type builtin="yes" name="bool" />
+    </return>
+    <argument id="vector_is_sorted::v" name="v">
+      <doc>the <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref> in which to test for sortedness.</doc>
+      <type name="kld_vector_t" qualifier="*" ref="kld_vector_t#kld_vector_t" />
+    </argument>
+  </function>
   <function id="vector_partition" name="vector_partition">
     <brief> Partitions the <ref ref="kld_vector_t#kld_vector_t">kld_vector_t</ref> such that all elements contained in a subarray</brief>
     <doc>defined by bounds **left** and **right** that are less than or equal to the element at the **pivot** index are to the left of the **pivot** index

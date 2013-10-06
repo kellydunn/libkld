@@ -117,6 +117,25 @@ void vector_quicksort_recursive(kld_vector_t * v, int left, int right) {
   }
 }
 
+bool vector_is_sorted(kld_vector_t *v) {
+  // TODO assert that vector data is type int
+  if(v->size < 2) {
+    return true;
+  }
+
+  int i;
+  for(i = 0; i < v->size - 2; i++) {
+    int data = *((int*)vector_get(v, i));
+    int next = *((int*) vector_get(v, i+1));
+
+    if(data > next) {
+      return false;
+    }
+  }
+
+  return true;  
+}
+
 void vector_quicksort(kld_vector_t * v) {
   if(v->size >= 2) {
     vector_quicksort_recursive(v, 0, v->size - 1);

@@ -221,6 +221,28 @@ START_TEST (test_vector_quicksort_10) {
     int data  = *((int *) vector_get(v, i-1));
     fail_if(data != i, "Expected sorted values after calling quicksort on an array with 10 elements");
   }
+
+  fail_if(!vector_is_sorted(v), "Expected vector to be sorted after quicksorting it");
+} END_TEST
+
+START_TEST (test_vector_is_sorted) {
+  kld_vector_t * v = (kld_vector_t *) new_vector();
+  int i;
+
+  fail_if(!vector_is_sorted(v), "Expected vector to be sorted after initialization.");
+
+  for(i = 10; i >0; i--) {
+    int * data = calloc(1, sizeof(int));
+    *data = i;
+    vector_append(v, data);
+  }
+
+  fail_if(vector_is_sorted(v), "Expected vector to not be sorted when items added out of order.");
+
+  vector_quicksort(v);
+
+  fail_if(!vector_is_sorted(v), "Expected vector to be sorted when items added out of order then sorted.");
+
 } END_TEST
 
 Suite * new_vector_suite() {
@@ -247,6 +269,8 @@ Suite * new_vector_suite() {
   tcase_add_test(tc_core, test_vector_quicksort_1);
   tcase_add_test(tc_core, test_vector_quicksort_10);
 
+  tcase_add_test(tc_core, test_vector_is_sorted);
+  
   suite_add_tcase(s, tc_core);
 
   return s;
