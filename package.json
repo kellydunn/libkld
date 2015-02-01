@@ -1,0 +1,27 @@
+{
+    "name":"libkld",
+    "version":"0.0.0",
+    "src":[
+        "src/common/common.h",
+        "src/common/common.c",
+        "src/graph/graph.h",
+        "src/graph/graph.c",
+        "src/list/list.h",
+        "src/list/list.c",
+        "src/matrix/matrix.h",
+        "src/matrix/matrix.c",
+        "src/tree/tree.h",
+        "src/tree/tree.c",
+        "src/vector/vector.h",
+        "src/vector/vector.c"
+    ],
+    "repo":"kellydunn/libkld",
+    "keywords":[
+        "data structures",
+        "graph",
+        "list",
+        "matrix",
+        "tree",
+        "vector"
+    ]
+}
